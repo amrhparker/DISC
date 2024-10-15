@@ -23,7 +23,6 @@ Partial Class frmView
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         ListView1 = New ListView()
-        btnBack = New Button()
         txtSearch = New TextBox()
         ListView2 = New ListView()
         Label1 = New Label()
@@ -33,12 +32,19 @@ Partial Class frmView
         btnNext = New Button()
         btnPrevious = New Button()
         btnSearch = New Button()
-        btnLogout = New Button()
-        btnDelete = New Button()
-        btnRegister = New Button()
-        btnUpdate = New Button()
         btnExport = New Button()
         SaveFileDialog1 = New SaveFileDialog()
+        MenuStrip1 = New MenuStrip()
+        strHome = New ToolStripMenuItem()
+        ToolStripMenuItem1 = New ToolStripMenuItem()
+        strView = New ToolStripMenuItem()
+        strUpdate = New ToolStripMenuItem()
+        strRegister = New ToolStripMenuItem()
+        strDelete = New ToolStripMenuItem()
+        AdministrationToolStripMenuItem = New ToolStripMenuItem()
+        strLogs = New ToolStripMenuItem()
+        strLogout = New ToolStripMenuItem()
+        MenuStrip1.SuspendLayout()
         SuspendLayout()
         ' 
         ' ListView1
@@ -52,21 +58,6 @@ Partial Class frmView
         ListView1.TabIndex = 7
         ListView1.UseCompatibleStateImageBehavior = False
         ListView1.View = View.Details
-        ' 
-        ' btnBack
-        ' 
-        btnBack.BackColor = Color.Transparent
-        btnBack.BackgroundImage = My.Resources.Resources.back_icon1
-        btnBack.BackgroundImageLayout = ImageLayout.Zoom
-        btnBack.FlatAppearance.BorderSize = 0
-        btnBack.FlatAppearance.MouseDownBackColor = Color.Transparent
-        btnBack.FlatAppearance.MouseOverBackColor = Color.Transparent
-        btnBack.FlatStyle = FlatStyle.Flat
-        btnBack.Location = New Point(12, 12)
-        btnBack.Name = "btnBack"
-        btnBack.Size = New Size(40, 40)
-        btnBack.TabIndex = 5
-        btnBack.UseVisualStyleBackColor = False
         ' 
         ' txtSearch
         ' 
@@ -176,50 +167,6 @@ Partial Class frmView
         btnSearch.Text = "Search"
         btnSearch.UseVisualStyleBackColor = False
         ' 
-        ' btnLogout
-        ' 
-        btnLogout.BackColor = Color.OrangeRed
-        btnLogout.Font = New Font("Arial Narrow", 9F)
-        btnLogout.Location = New Point(678, 12)
-        btnLogout.Name = "btnLogout"
-        btnLogout.Size = New Size(122, 40)
-        btnLogout.TabIndex = 60
-        btnLogout.Text = "Log Out"
-        btnLogout.UseVisualStyleBackColor = False
-        ' 
-        ' btnDelete
-        ' 
-        btnDelete.BackColor = Color.Orange
-        btnDelete.Font = New Font("Arial Narrow", 9F)
-        btnDelete.Location = New Point(550, 12)
-        btnDelete.Name = "btnDelete"
-        btnDelete.Size = New Size(122, 40)
-        btnDelete.TabIndex = 59
-        btnDelete.Text = "Delete Asset"
-        btnDelete.UseVisualStyleBackColor = False
-        ' 
-        ' btnRegister
-        ' 
-        btnRegister.BackColor = Color.Orange
-        btnRegister.Font = New Font("Arial Narrow", 9F)
-        btnRegister.Location = New Point(422, 12)
-        btnRegister.Name = "btnRegister"
-        btnRegister.Size = New Size(122, 40)
-        btnRegister.TabIndex = 58
-        btnRegister.Text = "Register Asset"
-        btnRegister.UseVisualStyleBackColor = False
-        ' 
-        ' btnUpdate
-        ' 
-        btnUpdate.BackColor = Color.Orange
-        btnUpdate.Font = New Font("Arial Narrow", 9F)
-        btnUpdate.Location = New Point(294, 12)
-        btnUpdate.Name = "btnUpdate"
-        btnUpdate.Size = New Size(122, 40)
-        btnUpdate.TabIndex = 57
-        btnUpdate.Text = "Update Asset"
-        btnUpdate.UseVisualStyleBackColor = False
-        ' 
         ' btnExport
         ' 
         btnExport.BackColor = Color.Orange
@@ -233,6 +180,72 @@ Partial Class frmView
         btnExport.Text = "Export to CSV"
         btnExport.UseVisualStyleBackColor = False
         ' 
+        ' MenuStrip1
+        ' 
+        MenuStrip1.ImageScalingSize = New Size(20, 20)
+        MenuStrip1.Items.AddRange(New ToolStripItem() {strHome, ToolStripMenuItem1, AdministrationToolStripMenuItem})
+        MenuStrip1.Location = New Point(0, 0)
+        MenuStrip1.Name = "MenuStrip1"
+        MenuStrip1.Size = New Size(1094, 28)
+        MenuStrip1.TabIndex = 62
+        MenuStrip1.Text = "MenuStrip1"
+        ' 
+        ' strHome
+        ' 
+        strHome.Name = "strHome"
+        strHome.Size = New Size(64, 24)
+        strHome.Text = "Home"
+        ' 
+        ' ToolStripMenuItem1
+        ' 
+        ToolStripMenuItem1.DropDownItems.AddRange(New ToolStripItem() {strView, strUpdate, strRegister, strDelete})
+        ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        ToolStripMenuItem1.Size = New Size(58, 24)
+        ToolStripMenuItem1.Text = "Asset"
+        ' 
+        ' strView
+        ' 
+        strView.Name = "strView"
+        strView.Size = New Size(224, 26)
+        strView.Text = "View"
+        ' 
+        ' strUpdate
+        ' 
+        strUpdate.Name = "strUpdate"
+        strUpdate.Size = New Size(224, 26)
+        strUpdate.Text = "Update"
+        ' 
+        ' strRegister
+        ' 
+        strRegister.Name = "strRegister"
+        strRegister.Size = New Size(224, 26)
+        strRegister.Text = "Register"
+        ' 
+        ' strDelete
+        ' 
+        strDelete.Name = "strDelete"
+        strDelete.Size = New Size(224, 26)
+        strDelete.Text = "Delete"
+        ' 
+        ' AdministrationToolStripMenuItem
+        ' 
+        AdministrationToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {strLogs, strLogout})
+        AdministrationToolStripMenuItem.Name = "AdministrationToolStripMenuItem"
+        AdministrationToolStripMenuItem.Size = New Size(121, 24)
+        AdministrationToolStripMenuItem.Text = "Administration"
+        ' 
+        ' strLogs
+        ' 
+        strLogs.Name = "strLogs"
+        strLogs.Size = New Size(224, 26)
+        strLogs.Text = "Logs"
+        ' 
+        ' strLogout
+        ' 
+        strLogout.Name = "strLogout"
+        strLogout.Size = New Size(224, 26)
+        strLogout.Text = "Log Out"
+        ' 
         ' frmView
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -240,10 +253,6 @@ Partial Class frmView
         BackColor = Color.PeachPuff
         ClientSize = New Size(1094, 691)
         Controls.Add(btnExport)
-        Controls.Add(btnLogout)
-        Controls.Add(btnDelete)
-        Controls.Add(btnRegister)
-        Controls.Add(btnUpdate)
         Controls.Add(btnSearch)
         Controls.Add(btnLastPage)
         Controls.Add(btnFirstPage)
@@ -254,16 +263,18 @@ Partial Class frmView
         Controls.Add(ListView2)
         Controls.Add(txtSearch)
         Controls.Add(ListView1)
-        Controls.Add(btnBack)
+        Controls.Add(MenuStrip1)
+        MainMenuStrip = MenuStrip1
         MaximizeBox = False
         Name = "frmView"
         Text = "frmView"
+        MenuStrip1.ResumeLayout(False)
+        MenuStrip1.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
     Friend WithEvents ListView1 As ListView
-    Friend WithEvents btnBack As Button
     Friend WithEvents txtSearch As TextBox
     Friend WithEvents ListView2 As ListView
     Friend WithEvents Label1 As Label
@@ -273,10 +284,16 @@ Partial Class frmView
     Friend WithEvents btnNext As Button
     Friend WithEvents btnPrevious As Button
     Friend WithEvents btnSearch As Button
-    Friend WithEvents btnLogout As Button
-    Friend WithEvents btnDelete As Button
-    Friend WithEvents btnRegister As Button
-    Friend WithEvents btnUpdate As Button
     Friend WithEvents btnExport As Button
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents strHome As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents strView As ToolStripMenuItem
+    Friend WithEvents strUpdate As ToolStripMenuItem
+    Friend WithEvents strRegister As ToolStripMenuItem
+    Friend WithEvents strDelete As ToolStripMenuItem
+    Friend WithEvents AdministrationToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents strLogs As ToolStripMenuItem
+    Friend WithEvents strLogout As ToolStripMenuItem
 End Class

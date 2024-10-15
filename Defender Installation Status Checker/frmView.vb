@@ -17,13 +17,6 @@ Public Class frmView
     ' Add a boolean flag to track the sort order
     Dim ascending As Boolean = True
 
-    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        ' Show the previous form
-        frmAdminMenu.Show()
-        ' Close the current form
-        Me.Hide()
-    End Sub
-
     Private Sub frmView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler Me.FormClosing, AddressOf frmView_FormClosing
         adminUser = retrieveUID.GetadminUser()
@@ -161,41 +154,12 @@ Public Class frmView
             connection.Close()
         End Try
     End Sub
-
     Private Sub btnSearch_MouseHover(sender As Object, e As EventArgs) Handles btnSearch.MouseHover
         btnSearch.BackColor = Color.DarkOrange
     End Sub
 
     Private Sub btnSearch_MouseLeave(sender As Object, e As EventArgs) Handles btnSearch.MouseLeave
         btnSearch.BackColor = Color.Orange
-    End Sub
-
-    Private Sub btnUpdate_MouseHover(sender As Object, e As EventArgs) Handles btnUpdate.MouseHover
-        btnUpdate.BackColor = Color.DarkOrange
-    End Sub
-    Private Sub btnUpdate_MouseLeave(sender As Object, e As EventArgs) Handles btnUpdate.MouseLeave
-        btnUpdate.BackColor = Color.Orange
-    End Sub
-
-    Private Sub btnRegister_MouseHover(sender As Object, e As EventArgs) Handles btnRegister.MouseHover
-        btnRegister.BackColor = Color.DarkOrange
-    End Sub
-    Private Sub btnRegister_MouseLeave(sender As Object, e As EventArgs) Handles btnRegister.MouseLeave
-        btnRegister.BackColor = Color.Orange
-    End Sub
-
-    Private Sub btnDelete_MouseHover(sender As Object, e As EventArgs) Handles btnDelete.MouseHover
-        btnDelete.BackColor = Color.DarkOrange
-    End Sub
-    Private Sub btnDelete_MouseLeave(sender As Object, e As EventArgs) Handles btnDelete.MouseLeave
-        btnDelete.BackColor = Color.Orange
-    End Sub
-
-    Private Sub btnLogout_MouseHover(sender As Object, e As EventArgs) Handles btnLogout.MouseHover
-        btnLogout.BackColor = Color.DarkRed
-    End Sub
-    Private Sub btnLogout_MouseLeave(sender As Object, e As EventArgs) Handles btnLogout.MouseLeave
-        btnLogout.BackColor = Color.OrangeRed
     End Sub
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         Dim assetNum = txtSearch.Text.Trim ' Get the search input
@@ -236,21 +200,57 @@ Public Class frmView
             connection.Close()
         End Try
     End Sub
-    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
-        Dim frm1 As New frmUpdate()
+
+    Private Sub strView_Click(sender As Object, e As EventArgs) Handles strView.Click
+        MessageBox.Show("You are already on the page")
+    End Sub
+
+    Private Sub strUpdate_Click(sender As Object, e As EventArgs) Handles strUpdate.Click
+        Dim frm1 As New frmUpdate
         frm1.Show()
-        Me.Hide()
+        Hide()
     End Sub
-    Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
-        Dim frm2 As New frmRegister()
+    Private Sub strRegister_Click(sender As Object, e As EventArgs) Handles strRegister.Click
+        Dim frm2 As New frmRegister
         frm2.Show()
-        Me.Hide()
+        Hide()
     End Sub
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        Dim frm4 As New frmDelete()
+    Private Sub strDelete_Click(sender As Object, e As EventArgs) Handles strDelete.Click
+        Dim frm4 As New frmDelete
         frm4.Show()
-        Me.Hide()
+        Hide()
     End Sub
+    Private Sub strHome_Click(sender As Object, e As EventArgs) Handles strHome.Click
+        ' Show the previous form
+        frmAdminMenu.Show()
+        ' Close the current form
+        Hide()
+    End Sub
+
+    Private Sub strLogs_Click(sender As Object, e As EventArgs) Handles strLogs.Click
+        frmLogs.Show()
+        Hide()
+    End Sub
+    Private Sub strLogout_Click(sender As Object, e As EventArgs) Handles strLogout.Click
+        ' Optional: Ask for logout confirmation
+        Dim confirmLogout = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If confirmLogout = DialogResult.Yes Then
+            LogActivity("Logout", $"'{currentUser}' logged out successfully.")
+            ' Optional: Clear any session data here
+            ' For example, clearing user-related data
+            currentUser = ""
+            currentPassword = ""
+            ' Show the login form again 
+            Dim loginForm As New frmALogin(frmHome)
+            loginForm.Show()
+
+            ' Close the current form completely
+            Close()
+        End If
+    End Sub
+
+
     Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListView1.ColumnClick
         ' Toggle sort order when the same column is clicked
         If ListView1.ListViewItemSorter IsNot Nothing Then
@@ -337,24 +337,6 @@ Public Class frmView
     End Sub
 
 
-    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        ' Optional: Ask for logout confirmation
-        Dim confirmLogout As DialogResult = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        If confirmLogout = DialogResult.Yes Then
-            enterLog.LogActivity("Logout", $"'{GlobalVariables.currentUser}' logged out successfully.")
-            ' Optional: Clear any session data here
-            ' For example, clearing user-related data
-            GlobalVariables.currentUser = ""
-            GlobalVariables.currentPassword = ""
-            ' Show the login form again 
-            Dim loginForm As New frmALogin(frmHome)
-            loginForm.Show()
-
-            ' Close the current form completely
-            Me.Close()
-        End If
-    End Sub
 
     Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
         ExportListViewToCSV(ListView1)

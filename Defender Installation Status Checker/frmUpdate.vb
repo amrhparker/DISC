@@ -6,11 +6,11 @@ Public Class frmUpdate
     Dim allOffice As New List(Of String)
     Private adminUser As List(Of String)
     ' Constructor to accept the previous form as a parameter
-    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+    Private Sub btnBack_Click(sender As Object, e As EventArgs)
         ' Show the previous form
-        frmAdminMenu.Show()
+        frmAdminMenu.Show
         ' Close the current form
-        Me.Hide()
+        Hide
     End Sub
     Private Sub frmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler Me.FormClosing, AddressOf frmUpdate_FormClosing
@@ -179,63 +179,52 @@ Public Class frmUpdate
         btnUpdate.BackColor = Color.Orange
     End Sub
 
-    Private Sub btnView_MouseHover(sender As Object, e As EventArgs) Handles btnView.MouseHover
-        btnView.BackColor = Color.DarkOrange
-    End Sub
-    Private Sub btnView_MouseLeave(sender As Object, e As EventArgs) Handles btnView.MouseLeave
-        btnView.BackColor = Color.Orange
-    End Sub
-    Private Sub btnRegister_MouseHover(sender As Object, e As EventArgs) Handles btnRegister.MouseHover
-        btnRegister.BackColor = Color.DarkOrange
-    End Sub
-    Private Sub btnRegister_MouseLeave(sender As Object, e As EventArgs) Handles btnRegister.MouseLeave
-        btnRegister.BackColor = Color.Orange
+    Private Sub strView_Click(sender As Object, e As EventArgs) Handles strView.Click
+        Dim frm1 As New frmView
+        frm1.Show()
+        Hide()
     End Sub
 
-    Private Sub btnDelete_MouseHover(sender As Object, e As EventArgs) Handles btnDelete.MouseHover
-        btnDelete.BackColor = Color.DarkOrange
+    Private Sub strUpdate_Click(sender As Object, e As EventArgs) Handles strUpdate.Click
+        MessageBox.Show("You are already on the page")
     End Sub
-    Private Sub btnDelete_MouseLeave(sender As Object, e As EventArgs) Handles btnDelete.MouseLeave
-        btnDelete.BackColor = Color.Orange
+    Private Sub strRegister_Click(sender As Object, e As EventArgs) Handles strRegister.Click
+        Dim frm2 As New frmRegister
+        frm2.Show()
+        Hide()
+    End Sub
+    Private Sub strDelete_Click(sender As Object, e As EventArgs) Handles strDelete.Click
+        Dim frm4 As New frmDelete
+        frm4.Show()
+        Hide()
+    End Sub
+    Private Sub strHome_Click(sender As Object, e As EventArgs) Handles strHome.Click
+        ' Show the previous form
+        frmAdminMenu.Show()
+        ' Close the current form
+        Hide()
     End Sub
 
-    Private Sub btnLogout_MouseHover(sender As Object, e As EventArgs) Handles btnLogout.MouseHover
-        btnLogout.BackColor = Color.DarkRed
+    Private Sub strLogs_Click(sender As Object, e As EventArgs) Handles strLogs.Click
+        frmLogs.Show()
+        Hide()
     End Sub
-    Private Sub btnLogout_MouseLeave(sender As Object, e As EventArgs) Handles btnLogout.MouseLeave
-        btnLogout.BackColor = Color.OrangeRed
-    End Sub
-    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+    Private Sub strLogout_Click(sender As Object, e As EventArgs) Handles strLogout.Click
         ' Optional: Ask for logout confirmation
-        Dim confirmLogout As DialogResult = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        Dim confirmLogout = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If confirmLogout = DialogResult.Yes Then
-            enterLog.LogActivity("Logout", $"'{GlobalVariables.currentUser}' logged out successfully.")
+            LogActivity("Logout", $"'{currentUser}' logged out successfully.")
             ' Optional: Clear any session data here
             ' For example, clearing user-related data
-            GlobalVariables.currentUser = ""
-            GlobalVariables.currentPassword = ""
+            currentUser = ""
+            currentPassword = ""
             ' Show the login form again 
             Dim loginForm As New frmALogin(frmHome)
             loginForm.Show()
 
             ' Close the current form completely
-            Me.Close()
+            Close()
         End If
-    End Sub
-    Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click
-        Dim frm1 As New frmView()
-        frm1.Show()
-        Me.Hide()
-    End Sub
-    Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
-        Dim frm2 As New frmRegister()
-        frm2.Show()
-        Me.Hide()
-    End Sub
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        Dim frm4 As New frmDelete()
-        frm4.Show()
-        Me.Hide()
     End Sub
 End Class
