@@ -34,7 +34,6 @@ Public Class frmView
         ' Set up the columns in the ListView
         ListView1.Columns.Add("Asset Number", 120, HorizontalAlignment.Center)
         ListView1.Columns.Add("Asset SAP", 120, HorizontalAlignment.Center)
-        ListView1.Columns.Add("Asset Type", 50, HorizontalAlignment.Center)
         ListView1.Columns.Add("Asset Status", 100, HorizontalAlignment.Center)
         ListView1.Columns.Add("Office", 300, HorizontalAlignment.Center)
         ListView1.Columns.Add("State", 150, HorizontalAlignment.Center)
@@ -50,7 +49,6 @@ Public Class frmView
         ' Set up ListView2 similarly
         ListView2.Columns.Add("Asset Number", 120, HorizontalAlignment.Center)
         ListView2.Columns.Add("Asset SAP", 120, HorizontalAlignment.Center)
-        ListView2.Columns.Add("Asset Type", 50, HorizontalAlignment.Center)
         ListView2.Columns.Add("Asset Status", 100, HorizontalAlignment.Center)
         ListView2.Columns.Add("Office", 300, HorizontalAlignment.Center)
         ListView2.Columns.Add("State", 150, HorizontalAlignment.Center)
@@ -123,7 +121,7 @@ Public Class frmView
             connection.Open()
 
             ' SQL Query with pagination
-            Dim sql As String = "SELECT a.assetNum, a.assetType, a.assetStatus, a.assetSAP, o.officeName, l.locationName " &
+            Dim sql As String = "SELECT a.assetNum, a.assetStatus, a.assetSAP, o.officeName, l.locationName " &
                             "FROM asset a " &
                             "JOIN office o ON a.officeID = o.officeID " &
                             "JOIN location l ON o.locationID = l.locationID " &
@@ -141,7 +139,6 @@ Public Class frmView
             While reader.Read()
                 Dim item As New ListViewItem(reader("assetNum").ToString())
                 item.SubItems.Add(reader("assetSAP").ToString())
-                item.SubItems.Add(reader("assetType").ToString())
                 item.SubItems.Add(If(reader("assetStatus") = 1, "Installed", "Not Installed"))
                 item.SubItems.Add(reader("officeName").ToString())
                 item.SubItems.Add(reader("locationName").ToString())
@@ -166,7 +163,7 @@ Public Class frmView
 
         Try
             connection.Open()
-            Dim sql = "SELECT a.assetNum, a.assetStatus, a.assetType, a.assetSAP, l.locationName, o.officeName FROM asset a INNER JOIN office o ON a.officeID = o.officeID INNER JOIN location l ON o.locationID = l.locationID WHERE a.assetNum = @assetNum;"
+            Dim sql = "SELECT a.assetNum, a.assetStatus, a.assetSAP, l.locationName, o.officeName FROM asset a INNER JOIN office o ON a.officeID = o.officeID INNER JOIN location l ON o.locationID = l.locationID WHERE a.assetNum = @assetNum;"
 
             Dim command As New SQLiteCommand(sql, connection)
             command.Parameters.AddWithValue("@assetNum", assetNum)
@@ -178,7 +175,6 @@ Public Class frmView
             If reader.Read Then
                 Dim item As New ListViewItem(reader("assetNum").ToString)
                 item.SubItems.Add(reader("assetSAP").ToString())
-                item.SubItems.Add(reader("assetType").ToString)
                 item.SubItems.Add(If(reader("assetStatus") = 1, "Installed", "Not Installed"))
                 item.SubItems.Add(reader("officeName").ToString)
                 item.SubItems.Add(reader("locationName").ToString)
@@ -364,7 +360,7 @@ Public Class frmView
                     connection.Open()
 
                     ' Query to fetch all assets
-                    Dim sql = "SELECT a.assetNum, a.assetStatus, a.assetType, a.assetSAP l.locationName, o.officeName 
+                    Dim sql = "SELECT a.assetNum, a.assetStatus, a.assetSAP l.locationName, o.officeName 
                            FROM asset a 
                            INNER JOIN office o ON a.officeID = o.officeID
                            INNER JOIN location l ON o.locationID = l.locationID;"
@@ -373,19 +369,18 @@ Public Class frmView
                     Dim reader = command.ExecuteReader()
 
                     ' Write the CSV headers
-                    writer.WriteLine("Asset Number,Asset Status,Asset Type,Location Name,Office Name")
+                    writer.WriteLine("Asset Number,Asset SAP, Asset Status,Location Name,Office Name")
 
                     ' Write the data rows
                     While reader.Read()
                         Dim assetNum As String = reader("assetNum").ToString()
                         Dim assetSAP As String = reader("assetSAP").ToString()
                         Dim assetStatus As String = If(reader("assetStatus") = 1, "Installed", "Not Installed")
-                        Dim assetType As String = reader("assetType").ToString()
                         Dim locationName As String = reader("locationName").ToString()
                         Dim officeName As String = reader("officeName").ToString()
 
                         ' Write the row to the CSV
-                        writer.WriteLine(String.Join(",", assetNum, assetStatus, assetType, assetSAP, locationName, officeName))
+                        writer.WriteLine(String.Join(",", assetNum, assetSAP, assetStatus, locationName, officeName))
                     End While
 
                     ' Notify user of successful export

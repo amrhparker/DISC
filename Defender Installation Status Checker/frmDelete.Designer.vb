@@ -32,9 +32,7 @@ Partial Class frmDelete
         lblLoc = New Label()
         lblStatus = New Label()
         lblNum = New Label()
-        lblType = New Label()
         Label4 = New Label()
-        Label3 = New Label()
         Label1 = New Label()
         PictureBox2 = New PictureBox()
         btnDelete = New Button()
@@ -107,7 +105,7 @@ Partial Class frmDelete
         lblOff.AutoSize = True
         lblOff.BackColor = Color.Orange
         lblOff.Font = New Font("Arial", 9F)
-        lblOff.Location = New Point(308, 378)
+        lblOff.Location = New Point(308, 352)
         lblOff.Name = "lblOff"
         lblOff.Size = New Size(12, 17)
         lblOff.TabIndex = 46
@@ -117,7 +115,7 @@ Partial Class frmDelete
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Arial Narrow", 9F)
-        Label6.Location = New Point(40, 374)
+        Label6.Location = New Point(40, 352)
         Label6.Name = "Label6"
         Label6.Size = New Size(42, 20)
         Label6.TabIndex = 45
@@ -127,7 +125,7 @@ Partial Class frmDelete
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Arial Narrow", 9F)
-        Label5.Location = New Point(40, 170)
+        Label5.Location = New Point(40, 163)
         Label5.Name = "Label5"
         Label5.Size = New Size(64, 20)
         Label5.TabIndex = 44
@@ -138,7 +136,7 @@ Partial Class frmDelete
         lblLoc.AutoSize = True
         lblLoc.BackColor = Color.Orange
         lblLoc.Font = New Font("Arial", 9F)
-        lblLoc.Location = New Point(308, 323)
+        lblLoc.Location = New Point(308, 289)
         lblLoc.Name = "lblLoc"
         lblLoc.Size = New Size(12, 17)
         lblLoc.TabIndex = 43
@@ -149,7 +147,7 @@ Partial Class frmDelete
         lblStatus.AutoSize = True
         lblStatus.BackColor = Color.Orange
         lblStatus.Font = New Font("Arial", 9F)
-        lblStatus.Location = New Point(308, 272)
+        lblStatus.Location = New Point(308, 226)
         lblStatus.Name = "lblStatus"
         lblStatus.Size = New Size(12, 17)
         lblStatus.TabIndex = 42
@@ -160,49 +158,27 @@ Partial Class frmDelete
         lblNum.AutoSize = True
         lblNum.BackColor = Color.Orange
         lblNum.Font = New Font("Arial", 9F)
-        lblNum.Location = New Point(308, 119)
+        lblNum.Location = New Point(308, 100)
         lblNum.Name = "lblNum"
         lblNum.Size = New Size(12, 17)
         lblNum.TabIndex = 41
         lblNum.Text = " "
         ' 
-        ' lblType
-        ' 
-        lblType.AutoSize = True
-        lblType.BackColor = Color.Orange
-        lblType.Font = New Font("Arial", 9F)
-        lblType.ForeColor = Color.Black
-        lblType.Location = New Point(308, 221)
-        lblType.Name = "lblType"
-        lblType.Size = New Size(12, 17)
-        lblType.TabIndex = 40
-        lblType.Text = " "
-        ' 
         ' Label4
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial Narrow", 9F)
-        Label4.Location = New Point(40, 323)
+        Label4.Location = New Point(40, 289)
         Label4.Name = "Label4"
         Label4.Size = New Size(57, 20)
         Label4.TabIndex = 39
         Label4.Text = "Location"
         ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Font = New Font("Arial Narrow", 9F)
-        Label3.Location = New Point(40, 221)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(69, 20)
-        Label3.TabIndex = 38
-        Label3.Text = "Asset Type"
-        ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Arial Narrow", 9F)
-        Label1.Location = New Point(40, 119)
+        Label1.Location = New Point(40, 100)
         Label1.Name = "Label1"
         Label1.Size = New Size(60, 20)
         Label1.TabIndex = 37
@@ -211,9 +187,9 @@ Partial Class frmDelete
         ' PictureBox2
         ' 
         PictureBox2.BackColor = Color.Orange
-        PictureBox2.Location = New Point(19, 74)
+        PictureBox2.Location = New Point(19, 72)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(696, 366)
+        PictureBox2.Size = New Size(696, 317)
         PictureBox2.TabIndex = 36
         PictureBox2.TabStop = False
         ' 
@@ -233,7 +209,7 @@ Partial Class frmDelete
         ' 
         Label7.AutoSize = True
         Label7.Font = New Font("Arial Narrow", 9F)
-        Label7.Location = New Point(40, 272)
+        Label7.Location = New Point(40, 226)
         Label7.Name = "Label7"
         Label7.Size = New Size(159, 20)
         Label7.TabIndex = 53
@@ -244,7 +220,7 @@ Partial Class frmDelete
         lblSAP.AutoSize = True
         lblSAP.BackColor = Color.Orange
         lblSAP.Font = New Font("Arial", 9F)
-        lblSAP.Location = New Point(308, 170)
+        lblSAP.Location = New Point(308, 163)
         lblSAP.Name = "lblSAP"
         lblSAP.Size = New Size(12, 17)
         lblSAP.TabIndex = 54
@@ -329,8 +305,6 @@ Partial Class frmDelete
         GroupBox1.Controls.Add(lblStatus)
         GroupBox1.Controls.Add(Label6)
         GroupBox1.Controls.Add(lblNum)
-        GroupBox1.Controls.Add(lblType)
-        GroupBox1.Controls.Add(Label3)
         GroupBox1.Controls.Add(Label5)
         GroupBox1.Controls.Add(Label4)
         GroupBox1.Controls.Add(PictureBox2)
@@ -371,9 +345,7 @@ Partial Class frmDelete
     Friend WithEvents lblLoc As Label
     Friend WithEvents lblStatus As Label
     Friend WithEvents lblNum As Label
-    Friend WithEvents lblType As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents Label3 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents btnDelete As Button

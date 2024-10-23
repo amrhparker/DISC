@@ -27,11 +27,9 @@ Partial Class frmUpdate
         Label7 = New Label()
         chkStatus = New CheckBox()
         btnUpdate = New Button()
-        cboType = New ComboBox()
         txtAssetNum = New TextBox()
         Label6 = New Label()
         Label4 = New Label()
-        Label3 = New Label()
         Label2 = New Label()
         btnSearch = New Button()
         Label1 = New Label()
@@ -58,7 +56,7 @@ Partial Class frmUpdate
         lblState.BackColor = Color.Transparent
         lblState.Cursor = Cursors.Hand
         lblState.Font = New Font("Arial Narrow", 16F)
-        lblState.Location = New Point(408, 118)
+        lblState.Location = New Point(408, 109)
         lblState.Name = "lblState"
         lblState.Padding = New Padding(10, 5, 10, 5)
         lblState.Size = New Size(279, 41)
@@ -82,7 +80,7 @@ Partial Class frmUpdate
         Label7.AutoSize = True
         Label7.Font = New Font("Arial Narrow", 9F)
         Label7.ForeColor = SystemColors.GrayText
-        Label7.Location = New Point(432, 244)
+        Label7.Location = New Point(431, 179)
         Label7.Margin = New Padding(2, 0, 2, 0)
         Label7.Name = "Label7"
         Label7.Size = New Size(130, 20)
@@ -93,7 +91,7 @@ Partial Class frmUpdate
         ' 
         chkStatus.AutoSize = True
         chkStatus.Font = New Font("Arial Narrow", 9F)
-        chkStatus.Location = New Point(351, 243)
+        chkStatus.Location = New Point(351, 178)
         chkStatus.Margin = New Padding(2, 3, 2, 3)
         chkStatus.Name = "chkStatus"
         chkStatus.Size = New Size(77, 24)
@@ -105,7 +103,7 @@ Partial Class frmUpdate
         ' 
         btnUpdate.BackColor = Color.Orange
         btnUpdate.Font = New Font("Arial Narrow", 9F)
-        btnUpdate.Location = New Point(506, 559)
+        btnUpdate.Location = New Point(506, 550)
         btnUpdate.Margin = New Padding(2, 3, 2, 3)
         btnUpdate.Name = "btnUpdate"
         btnUpdate.Padding = New Padding(2)
@@ -113,16 +111,6 @@ Partial Class frmUpdate
         btnUpdate.TabIndex = 28
         btnUpdate.Text = "Update"
         btnUpdate.UseVisualStyleBackColor = False
-        ' 
-        ' cboType
-        ' 
-        cboType.Font = New Font("Arial Narrow", 9F)
-        cboType.FormattingEnabled = True
-        cboType.Location = New Point(351, 118)
-        cboType.Margin = New Padding(2, 3, 2, 3)
-        cboType.Name = "cboType"
-        cboType.Size = New Size(430, 28)
-        cboType.TabIndex = 25
         ' 
         ' txtAssetNum
         ' 
@@ -137,7 +125,7 @@ Partial Class frmUpdate
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Arial Narrow", 9F)
-        Label6.Location = New Point(234, 182)
+        Label6.Location = New Point(234, 117)
         Label6.Margin = New Padding(2, 0, 2, 0)
         Label6.Name = "Label6"
         Label6.Size = New Size(64, 20)
@@ -148,23 +136,12 @@ Partial Class frmUpdate
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial Narrow", 9F)
-        Label4.Location = New Point(193, 243)
+        Label4.Location = New Point(193, 178)
         Label4.Margin = New Padding(2, 0, 2, 0)
         Label4.Name = "Label4"
         Label4.Size = New Size(105, 20)
         Label4.TabIndex = 21
         Label4.Text = "Installation Status"
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Font = New Font("Arial Narrow", 9F)
-        Label3.Location = New Point(229, 121)
-        Label3.Margin = New Padding(2, 0, 2, 0)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(69, 20)
-        Label3.TabIndex = 20
-        Label3.Text = "Asset Type"
         ' 
         ' Label2
         ' 
@@ -194,7 +171,7 @@ Partial Class frmUpdate
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Arial Narrow", 9F)
-        Label1.Location = New Point(205, 304)
+        Label1.Location = New Point(205, 239)
         Label1.Margin = New Padding(2, 0, 2, 0)
         Label1.Name = "Label1"
         Label1.Size = New Size(93, 20)
@@ -205,7 +182,7 @@ Partial Class frmUpdate
         ' 
         cboOffice.Font = New Font("Arial Narrow", 9F)
         cboOffice.FormattingEnabled = True
-        cboOffice.Location = New Point(351, 304)
+        cboOffice.Location = New Point(351, 239)
         cboOffice.Margin = New Padding(2, 3, 2, 3)
         cboOffice.Name = "cboOffice"
         cboOffice.Size = New Size(430, 28)
@@ -214,7 +191,7 @@ Partial Class frmUpdate
         ' txtSAP
         ' 
         txtSAP.Font = New Font("Arial Narrow", 9F)
-        txtSAP.Location = New Point(351, 182)
+        txtSAP.Location = New Point(351, 117)
         txtSAP.Margin = New Padding(2, 3, 2, 3)
         txtSAP.Name = "txtSAP"
         txtSAP.Size = New Size(430, 25)
@@ -293,17 +270,15 @@ Partial Class frmUpdate
         GroupBox1.Controls.Add(Label1)
         GroupBox1.Controls.Add(Label2)
         GroupBox1.Controls.Add(cboOffice)
-        GroupBox1.Controls.Add(Label3)
         GroupBox1.Controls.Add(Label8)
         GroupBox1.Controls.Add(Label4)
         GroupBox1.Controls.Add(btnSearch)
         GroupBox1.Controls.Add(Label6)
         GroupBox1.Controls.Add(Label7)
-        GroupBox1.Controls.Add(cboType)
         GroupBox1.Controls.Add(chkStatus)
-        GroupBox1.Location = New Point(46, 186)
+        GroupBox1.Location = New Point(46, 205)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(1003, 346)
+        GroupBox1.Size = New Size(1003, 290)
         GroupBox1.TabIndex = 64
         GroupBox1.TabStop = False
         ' 
@@ -332,11 +307,9 @@ Partial Class frmUpdate
     Friend WithEvents Label7 As Label
     Friend WithEvents chkStatus As CheckBox
     Friend WithEvents btnUpdate As Button
-    Friend WithEvents cboType As ComboBox
     Friend WithEvents txtAssetNum As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents btnSearch As Button
     Friend WithEvents Label1 As Label

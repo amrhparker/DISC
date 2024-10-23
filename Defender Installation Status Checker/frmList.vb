@@ -31,7 +31,6 @@ Public Class frmList
         getTotalAsset()
         getTotalAssetNoDefend()
         ListView1.Columns.Add("Asset Number", 120, HorizontalAlignment.Center)
-        ListView1.Columns.Add("Asset Type", 50, HorizontalAlignment.Center)
         ListView1.Columns.Add("Asset Status", 100, HorizontalAlignment.Center)
         ListView1.Columns.Add("Asset SAP", 120, HorizontalAlignment.Center)
         ListView1.Columns.Add("Office", 200, HorizontalAlignment.Center)
@@ -169,23 +168,31 @@ Public Class frmList
     End Sub
 
     Private Sub retrieveData()
+        Dim reader As SQLiteDataReader = Nothing
         Try
-            connection.Open()
+            ' Ensure the connection is open before executing the query
+            If connection.State <> ConnectionState.Open Then
+                connection.Open()
+            End If
 
-            ' Calculate total number of records and pages
+            ' SQL Query to calculate total records and pages
             Dim totalRecords As Integer
-            Dim sql As String = "SELECT COUNT(*) FROM asset a JOIN office o ON a.officeID = o.officeID JOIN location l ON o.locationID = l.locationID WHERE l.locationID = @locID;"
+            Dim sql As String = "SELECT COUNT(*) FROM asset a 
+                             JOIN office o ON a.officeID = o.officeID 
+                             JOIN location l ON o.locationID = l.locationID 
+                             WHERE l.locationID = @locID;"
             Dim countCommand As New SQLiteCommand(sql, connection)
             countCommand.Parameters.AddWithValue("@locID", locID)
             totalRecords = Convert.ToInt32(countCommand.ExecuteScalar())
 
+            ' Calculate total pages
             Dim totalPages As Integer = Math.Ceiling(totalRecords / Convert.ToDouble(pageSize))
 
             ' Update page info label
             lblPageInfo.Text = "Page " & currentPage & " of " & totalPages
 
-            ' SQL Query with pagination - dynamically adding pageSize and offset
-            Dim sql1 As String = "SELECT a.assetNum, a.assetType, a.assetStatus, a.assetSAP, o.officeName 
+            ' SQL Query with pagination
+            Dim sql1 As String = "SELECT a.assetNum, a.assetStatus, a.assetSAP, o.officeName 
                               FROM asset a 
                               JOIN office o ON a.officeID = o.officeID
                               JOIN location l ON o.locationID = l.locationID 
@@ -195,7 +202,8 @@ Public Class frmList
             Dim command As New SQLiteCommand(sql1, connection)
             command.Parameters.AddWithValue("@locID", locID)
 
-            Dim reader As SQLiteDataReader = command.ExecuteReader()
+            ' Execute the query and read the data
+            reader = command.ExecuteReader()
 
             ' Clear existing items in the ListView
             ListView1.Items.Clear()
@@ -203,7 +211,6 @@ Public Class frmList
             ' Loop through the data and add it to the ListView
             While reader.Read()
                 Dim item As New ListViewItem(reader("assetNum").ToString())
-                item.SubItems.Add(reader("assetType").ToString())
                 item.SubItems.Add(If(reader("assetStatus") = 1, "Installed", "Not Installed"))
                 item.SubItems.Add(reader("assetSAP").ToString())
                 item.SubItems.Add(reader("officeName").ToString())
@@ -211,11 +218,21 @@ Public Class frmList
             End While
 
         Catch ex As Exception
+            ' Handle any exceptions
             MessageBox.Show("Failed to retrieve data: " & ex.Message)
+
         Finally
-            connection.Close()
+            ' Ensure that the reader is closed if it was opened
+            If reader IsNot Nothing AndAlso Not reader.IsClosed Then
+                reader.Close()
+            End If
+            ' Ensure the connection is closed
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
         End Try
     End Sub
+
 
     Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
         ' Calculate total records and total pages
@@ -255,16 +272,17 @@ Public Class frmList
     End Sub
     Private Sub btnLastPage_Click(sender As Object, e As EventArgs) Handles btnLastPage.Click
         Try
-            ' Recalculate total records and total pages
+            ' Recalculate total records and total pages for the current location
             connection.Open()
 
-            ' General query to get total records (remove location filtering if not needed)
-            Dim countCommand As New SQLiteCommand("SELECT COUNT(*) FROM asset", connection)
+            ' Query to get the total number of records for the current location (using locID filter)
+            Dim countCommand As New SQLiteCommand("SELECT COUNT(*) FROM asset a 
+                                                JOIN office o ON a.officeID = o.officeID 
+                                                JOIN location l ON o.locationID = l.locationID 
+                                                WHERE l.locationID = @locID;", connection)
+            countCommand.Parameters.AddWithValue("@locID", locID)
             totalRecords = Convert.ToInt32(countCommand.ExecuteScalar())
             totalPages = Math.Ceiling(totalRecords / pageSize)
-
-            ' Ensure connection is closed
-            connection.Close()
 
             ' Navigate to the last page
             If totalPages > 0 Then

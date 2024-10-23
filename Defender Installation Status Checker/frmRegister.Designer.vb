@@ -24,11 +24,9 @@ Partial Class frmRegister
     Private Sub InitializeComponent()
         Label1 = New Label()
         Label2 = New Label()
-        Label3 = New Label()
         Label4 = New Label()
         Label6 = New Label()
         txtAssetNum = New TextBox()
-        cboType = New ComboBox()
         btnRegister = New Button()
         chkStatus = New CheckBox()
         Label7 = New Label()
@@ -76,22 +74,11 @@ Partial Class frmRegister
         Label2.TabIndex = 4
         Label2.Text = "Enter asset number"
         ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Font = New Font("Arial Narrow", 9F)
-        Label3.Location = New Point(47, 152)
-        Label3.Margin = New Padding(2, 0, 2, 0)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(69, 20)
-        Label3.TabIndex = 5
-        Label3.Text = "Asset Type"
-        ' 
         ' Label4
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial Narrow", 9F)
-        Label4.Location = New Point(11, 210)
+        Label4.Location = New Point(11, 189)
         Label4.Margin = New Padding(2, 0, 2, 0)
         Label4.Name = "Label4"
         Label4.Size = New Size(105, 20)
@@ -102,7 +89,7 @@ Partial Class frmRegister
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Arial Narrow", 9F)
-        Label6.Location = New Point(23, 271)
+        Label6.Location = New Point(23, 270)
         Label6.Margin = New Padding(2, 0, 2, 0)
         Label6.Name = "Label6"
         Label6.Size = New Size(93, 20)
@@ -117,16 +104,6 @@ Partial Class frmRegister
         txtAssetNum.Name = "txtAssetNum"
         txtAssetNum.Size = New Size(430, 25)
         txtAssetNum.TabIndex = 9
-        ' 
-        ' cboType
-        ' 
-        cboType.Font = New Font("Arial Narrow", 9F)
-        cboType.FormattingEnabled = True
-        cboType.Location = New Point(160, 152)
-        cboType.Margin = New Padding(2, 3, 2, 3)
-        cboType.Name = "cboType"
-        cboType.Size = New Size(430, 28)
-        cboType.TabIndex = 10
         ' 
         ' btnRegister
         ' 
@@ -145,7 +122,7 @@ Partial Class frmRegister
         ' 
         chkStatus.AutoSize = True
         chkStatus.Font = New Font("Arial Narrow", 9F)
-        chkStatus.Location = New Point(160, 210)
+        chkStatus.Location = New Point(160, 188)
         chkStatus.Margin = New Padding(2, 3, 2, 3)
         chkStatus.Name = "chkStatus"
         chkStatus.Size = New Size(77, 24)
@@ -158,7 +135,7 @@ Partial Class frmRegister
         Label7.AutoSize = True
         Label7.Font = New Font("Arial Narrow", 9F)
         Label7.ForeColor = SystemColors.GrayText
-        Label7.Location = New Point(241, 213)
+        Label7.Location = New Point(241, 191)
         Label7.Margin = New Padding(2, 0, 2, 0)
         Label7.Name = "Label7"
         Label7.Size = New Size(130, 20)
@@ -178,7 +155,7 @@ Partial Class frmRegister
         ' txtSAP
         ' 
         txtSAP.Font = New Font("Arial Narrow", 9F)
-        txtSAP.Location = New Point(160, 91)
+        txtSAP.Location = New Point(160, 108)
         txtSAP.Margin = New Padding(2, 3, 2, 3)
         txtSAP.Name = "txtSAP"
         txtSAP.Size = New Size(430, 25)
@@ -188,7 +165,7 @@ Partial Class frmRegister
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Arial Narrow", 9F)
-        Label5.Location = New Point(52, 91)
+        Label5.Location = New Point(52, 108)
         Label5.Margin = New Padding(2, 0, 2, 0)
         Label5.Name = "Label5"
         Label5.Size = New Size(64, 20)
@@ -264,14 +241,12 @@ Partial Class frmRegister
         ' GroupBox1
         ' 
         GroupBox1.CausesValidation = False
-        GroupBox1.Controls.Add(cboType)
         GroupBox1.Controls.Add(cboOffice)
         GroupBox1.Controls.Add(Label5)
         GroupBox1.Controls.Add(Label7)
         GroupBox1.Controls.Add(txtSAP)
         GroupBox1.Controls.Add(chkStatus)
         GroupBox1.Controls.Add(Label2)
-        GroupBox1.Controls.Add(Label3)
         GroupBox1.Controls.Add(txtAssetNum)
         GroupBox1.Controls.Add(Label4)
         GroupBox1.Controls.Add(Label6)
@@ -305,11 +280,9 @@ Partial Class frmRegister
     End Sub
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents txtAssetNum As TextBox
-    Friend WithEvents cboType As ComboBox
     Friend WithEvents btnRegister As Button
     Friend WithEvents chkStatus As CheckBox
     Friend WithEvents Label7 As Label

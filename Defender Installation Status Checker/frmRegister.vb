@@ -20,8 +20,6 @@ Public Class frmRegister
             Dim loginForm As New frmALogin(frmHome)
             loginForm.Show()
         End If
-        cboType.Items.Add("PC")
-        cboType.Items.Add("Laptop")
         txtAssetNum.Select()
         LoadComboBoxData()
     End Sub
@@ -91,18 +89,16 @@ Public Class frmRegister
     End Sub
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
         ' Validate input
-        If txtAssetNum.Text = "" Or cboType.Text = "" Or cboOffice.Text = "" Or txtSAP.Text = "" Then
+        If txtAssetNum.Text = "" Or cboOffice.Text = "" Or txtSAP.Text = "" Then
             MessageBox.Show("Please fill out all required fields.")
             Exit Sub
         End If
-
-        Dim assetTypeS As String = cboType.SelectedItem.ToString()
         Dim statVal As Integer = If(chkStatus.Checked, 1, 0)
         Dim office As String = cboOffice.SelectedItem.ToString()
 
         ' Prepare SQLite query
-        Dim sql As String = "INSERT INTO asset (assetNum, assetType, assetStatus, assetSAP, officeID) 
-                             VALUES (@assetNum, @assetType, @statVal, @assetSAP, (SELECT officeID FROM office WHERE officeName = @officeName));"
+        Dim sql As String = "INSERT INTO asset (assetNum, , assetStatus, assetSAP, officeID) 
+                             VALUES (@assetNum, @statVal, @assetSAP, (SELECT officeID FROM office WHERE officeName = @officeName));"
 
         Try
             Using connection As New SQLiteConnection(connString)
@@ -110,7 +106,6 @@ Public Class frmRegister
                 Using command As New SQLiteCommand(sql, connection)
                     ' Add parameters to avoid SQL injection
                     command.Parameters.AddWithValue("@assetNum", txtAssetNum.Text.Trim())
-                    command.Parameters.AddWithValue("@assetType", assetTypeS)
                     command.Parameters.AddWithValue("@statVal", statVal)
                     command.Parameters.AddWithValue("@assetSAP", txtSAP.Text.Trim())
                     command.Parameters.AddWithValue("@officeName", office)

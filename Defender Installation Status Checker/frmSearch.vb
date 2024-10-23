@@ -36,7 +36,7 @@ Public Class frmSearch
 
         Try
             connection.Open()
-            Dim sql = "SELECT a.assetNum, a.assetStatus, a.assetType, a.assetSAP, l.locationName, o.officeName
+            Dim sql = "SELECT a.assetNum, a.assetStatus, a.assetSAP, l.locationName, o.officeName
                        FROM asset a
                        INNER JOIN office o ON a.officeID = o.officeID
                        INNER JOIN location l ON o.locationID = l.locationID
@@ -48,7 +48,6 @@ Public Class frmSearch
                     If reader.Read() Then
                         ' Display the asset details
                         lblNum.Text = reader("assetNum").ToString
-                        lblType.Text = reader("assetType").ToString
                         If reader("assetStatus") = 1 Then
                             lblStatus.Text = "Installed"
                         ElseIf reader("assetStatus") = 0 Then

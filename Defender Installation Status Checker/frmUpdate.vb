@@ -51,12 +51,11 @@ Public Class frmUpdate
         Try
             Using connection As New SQLiteConnection(connString)
                 connection.Open()
-                Dim sql = "Select a.assetNum, a.assetStatus, a.assetType, a.assetSAP, o.officeName FROM asset a INNER Join office o ON a.officeID = o.officeID WHERE a.assetNum = @assetNum;"
+                Dim sql = "Select a.assetNum, a.assetStatus, a.assetSAP, o.officeName FROM asset a INNER Join office o ON a.officeID = o.officeID WHERE a.assetNum = @assetNum;"
                 Using command As New SQLiteCommand(sql, connection)
                     command.Parameters.AddWithValue("@assetNum", assetNum)
                     Using reader As SQLiteDataReader = command.ExecuteReader()
                         If reader.Read() Then
-                            cboType.Text = reader("assetType").ToString
                             chkStatus.Checked = Convert.ToBoolean(reader("assetStatus"))
                             txtSAP.Text = reader("assetSAP").ToString()
                             cboOffice.Text = reader("officeName").ToString()
@@ -73,19 +72,17 @@ Public Class frmUpdate
 
     Private Sub btnUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUpdate.Click
         Dim assetNum As String = txtAssetNum.Text.Trim()
-        Dim assetType As String = cboType.Text.Trim()
         Dim status As Boolean = chkStatus.Checked
         Dim sap As String = txtSAP.Text.Trim()
         Dim officeLocation As String = cboOffice.Text.Trim()
 
-        Dim Sql As String = "UPDATE asset SET assetType = @assetType, assetStatus = @status, assetSAP = @sap, officeID = (SELECT officeID FROM office WHERE officeName = @officeLocation) WHERE assetNum = @assetNum;"
+        Dim Sql As String = "UPDATE asset SET assetStatus = @status, assetSAP = @sap, officeID = (SELECT officeID FROM office WHERE officeName = @officeLocation) WHERE assetNum = @assetNum;"
 
         Try
             Using connection As New SQLiteConnection(connString)
                 connection.Open()
                 Using transaction As SQLiteTransaction = connection.BeginTransaction()
                     Using command As New SQLiteCommand(Sql, connection, transaction)
-                        command.Parameters.AddWithValue("@assetType", assetType)
                         command.Parameters.AddWithValue("@status", status)
                         command.Parameters.AddWithValue("@officeLocation", officeLocation)
                         command.Parameters.AddWithValue("@sap", sap)

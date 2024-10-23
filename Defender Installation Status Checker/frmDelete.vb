@@ -45,7 +45,7 @@ Public Class frmDelete
             Using connection As New SQLiteConnection(connString)
                 connection.Open()
 
-                Dim sql As String = "SELECT a.assetNum, a.assetStatus, a.assetType, a.assetSAP, l.locationName, o.officeName 
+                Dim sql As String = "SELECT a.assetNum, a.assetStatus, a.assetSAP, l.locationName, o.officeName 
                                  FROM asset a 
                                  INNER JOIN office o ON a.officeID = o.officeID
                                  INNER JOIN location l ON o.locationID = l.locationID
@@ -58,7 +58,6 @@ Public Class frmDelete
                         If reader.Read() Then
                             ' Display the asset details
                             lblNum.Text = reader("assetNum").ToString()
-                            lblType.Text = reader("assetType").ToString()
 
                             If reader("assetStatus") = 1 Then
                                 lblStatus.Text = "Installed"
@@ -190,5 +189,9 @@ Public Class frmDelete
     End Sub
     Private Sub btnDelete_MouseLeave(sender As Object, e As EventArgs) Handles btnDelete.MouseLeave
         btnDelete.BackColor = Color.Orange
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+
     End Sub
 End Class
