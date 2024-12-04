@@ -119,7 +119,7 @@ Public Class frmDelete
                             vacuumCommand.ExecuteNonQuery()
                         End Using
 
-                        enterLog.LogActivity("Delete", $"'{GlobalVariables.currentUser}' deleted asset '{txtAssetNum.Text.Trim()}' ")
+                        enterLog.LogActivity(GlobalVariables.currentUser, "Delete", $"'{txtAssetNum.Text.Trim()}' is deleted from the database")
                         My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Exclamation)
                         MessageBox.Show("Asset deleted successfully!")
                     Else
@@ -171,7 +171,7 @@ Public Class frmDelete
         Dim confirmLogout = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If confirmLogout = DialogResult.Yes Then
-            LogActivity("Logout", $"'{currentUser}' logged out successfully.")
+            enterLog.LogActivity(GlobalVariables.currentUser, "Logout", $"'{GlobalVariables.currentUser}' logged out successfully.")
             ' Optional: Clear any session data here
             ' For example, clearing user-related data
             currentUser = ""

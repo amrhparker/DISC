@@ -89,7 +89,7 @@ Public Class frmAdminMenu
         Dim confirmLogout = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If confirmLogout = DialogResult.Yes Then
-            enterLog.LogActivity("Logout", $"'{GlobalVariables.currentUser}' logged out successfully.")
+            enterLog.LogActivity(GlobalVariables.currentUser, "Logout", $"'{GlobalVariables.currentUser}' logged out successfully.")
             ' Optional: Clear any session data here
             ' For example, clearing user-related data
             GlobalVariables.currentUser = ""

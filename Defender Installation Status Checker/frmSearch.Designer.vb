@@ -29,11 +29,9 @@ Partial Class frmSearch
         Label2 = New Label()
         Label3 = New Label()
         Label4 = New Label()
-        lblType = New Label()
         lblNum = New Label()
         lblStatus = New Label()
         lblLoc = New Label()
-        Label5 = New Label()
         Label6 = New Label()
         lblOff = New Label()
         btnSearch = New Button()
@@ -76,7 +74,7 @@ Partial Class frmSearch
         ' 
         txtSearch.BackColor = Color.Orange
         txtSearch.Font = New Font("Arial", 9F)
-        txtSearch.Location = New Point(220, 168)
+        txtSearch.Location = New Point(200, 168)
         txtSearch.Name = "txtSearch"
         txtSearch.PlaceholderText = "Insert asset number"
         txtSearch.Size = New Size(608, 25)
@@ -87,7 +85,7 @@ Partial Class frmSearch
         PictureBox2.BackColor = Color.Orange
         PictureBox2.Location = New Point(199, 265)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(696, 366)
+        PictureBox2.Size = New Size(696, 314)
         PictureBox2.TabIndex = 7
         PictureBox2.TabStop = False
         ' 
@@ -95,7 +93,7 @@ Partial Class frmSearch
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Arial Narrow", 9F)
-        Label2.Location = New Point(219, 303)
+        Label2.Location = New Point(219, 309)
         Label2.Name = "Label2"
         Label2.Size = New Size(60, 20)
         Label2.TabIndex = 8
@@ -105,7 +103,7 @@ Partial Class frmSearch
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Arial Narrow", 9F)
-        Label3.Location = New Point(219, 413)
+        Label3.Location = New Point(220, 359)
         Label3.Name = "Label3"
         Label3.Size = New Size(159, 20)
         Label3.TabIndex = 9
@@ -115,30 +113,18 @@ Partial Class frmSearch
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial Narrow", 9F)
-        Label4.Location = New Point(219, 523)
+        Label4.Location = New Point(219, 468)
         Label4.Name = "Label4"
         Label4.Size = New Size(57, 20)
         Label4.TabIndex = 10
         Label4.Text = "Location"
-        ' 
-        ' lblType
-        ' 
-        lblType.AutoSize = True
-        lblType.BackColor = Color.Orange
-        lblType.Font = New Font("Arial", 9F)
-        lblType.ForeColor = Color.Black
-        lblType.Location = New Point(451, 359)
-        lblType.Name = "lblType"
-        lblType.Size = New Size(12, 17)
-        lblType.TabIndex = 13
-        lblType.Text = " "
         ' 
         ' lblNum
         ' 
         lblNum.AutoSize = True
         lblNum.BackColor = Color.Orange
         lblNum.Font = New Font("Arial", 9F)
-        lblNum.Location = New Point(451, 303)
+        lblNum.Location = New Point(452, 312)
         lblNum.Name = "lblNum"
         lblNum.Size = New Size(12, 17)
         lblNum.TabIndex = 14
@@ -149,7 +135,7 @@ Partial Class frmSearch
         lblStatus.AutoSize = True
         lblStatus.BackColor = Color.Orange
         lblStatus.Font = New Font("Arial", 9F)
-        lblStatus.Location = New Point(451, 415)
+        lblStatus.Location = New Point(452, 365)
         lblStatus.Name = "lblStatus"
         lblStatus.Size = New Size(12, 17)
         lblStatus.TabIndex = 15
@@ -160,27 +146,17 @@ Partial Class frmSearch
         lblLoc.AutoSize = True
         lblLoc.BackColor = Color.Orange
         lblLoc.Font = New Font("Arial", 9F)
-        lblLoc.Location = New Point(451, 525)
+        lblLoc.Location = New Point(452, 471)
         lblLoc.Name = "lblLoc"
         lblLoc.Size = New Size(12, 17)
         lblLoc.TabIndex = 16
         lblLoc.Text = " "
         ' 
-        ' Label5
-        ' 
-        Label5.AutoSize = True
-        Label5.Font = New Font("Arial Narrow", 9F)
-        Label5.Location = New Point(219, 358)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(69, 20)
-        Label5.TabIndex = 17
-        Label5.Text = "Asset Type"
-        ' 
         ' Label6
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Arial Narrow", 9F)
-        Label6.Location = New Point(219, 578)
+        Label6.Location = New Point(219, 518)
         Label6.Name = "Label6"
         Label6.Size = New Size(42, 20)
         Label6.TabIndex = 18
@@ -191,7 +167,7 @@ Partial Class frmSearch
         lblOff.AutoSize = True
         lblOff.BackColor = Color.Orange
         lblOff.Font = New Font("Arial", 9F)
-        lblOff.Location = New Point(451, 580)
+        lblOff.Location = New Point(452, 524)
         lblOff.Name = "lblOff"
         lblOff.Size = New Size(12, 17)
         lblOff.TabIndex = 19
@@ -201,7 +177,7 @@ Partial Class frmSearch
         ' 
         btnSearch.BackColor = Color.Orange
         btnSearch.Font = New Font("Arial Narrow", 9F)
-        btnSearch.Location = New Point(833, 166)
+        btnSearch.Location = New Point(813, 166)
         btnSearch.Margin = New Padding(2, 3, 2, 3)
         btnSearch.Name = "btnSearch"
         btnSearch.Padding = New Padding(2)
@@ -214,7 +190,7 @@ Partial Class frmSearch
         ' 
         Label7.AutoSize = True
         Label7.Font = New Font("Arial Narrow", 9F)
-        Label7.Location = New Point(219, 468)
+        Label7.Location = New Point(220, 415)
         Label7.Name = "Label7"
         Label7.Size = New Size(64, 20)
         Label7.TabIndex = 33
@@ -225,7 +201,7 @@ Partial Class frmSearch
         lblSAP.AutoSize = True
         lblSAP.BackColor = Color.Orange
         lblSAP.Font = New Font("Arial", 9F)
-        lblSAP.Location = New Point(451, 471)
+        lblSAP.Location = New Point(452, 418)
         lblSAP.Name = "lblSAP"
         lblSAP.Size = New Size(12, 17)
         lblSAP.TabIndex = 34
@@ -242,11 +218,9 @@ Partial Class frmSearch
         Controls.Add(btnSearch)
         Controls.Add(lblOff)
         Controls.Add(Label6)
-        Controls.Add(Label5)
         Controls.Add(lblLoc)
         Controls.Add(lblStatus)
         Controls.Add(lblNum)
-        Controls.Add(lblType)
         Controls.Add(Label4)
         Controls.Add(Label3)
         Controls.Add(Label2)
@@ -270,11 +244,9 @@ Partial Class frmSearch
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents lblType As Label
     Friend WithEvents lblNum As Label
     Friend WithEvents lblStatus As Label
     Friend WithEvents lblLoc As Label
-    Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents lblOff As Label
     Friend WithEvents btnSearch As Button

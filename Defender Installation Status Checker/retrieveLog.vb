@@ -8,6 +8,7 @@ Module retrieveLog
 
         ' Manually define the columns
         dataTable.Columns.Add("No.", GetType(Integer))
+        dataTable.Columns.Add("Admin", GetType(String))
         dataTable.Columns.Add("Action", GetType(String))
         dataTable.Columns.Add("Timestamp", GetType(DateTime))
         dataTable.Columns.Add("Details", GetType(String))
@@ -25,6 +26,7 @@ Module retrieveLog
 
                         ' Populate the row with values
                         newRow("No.") = reader("logID")
+                        newRow("Admin") = reader("uid")
                         newRow("Action") = reader("action")
                         newRow("Timestamp") = reader("timestamp")
                         newRow("Details") = reader("details")

@@ -232,7 +232,7 @@ Public Class frmView
         Dim confirmLogout = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If confirmLogout = DialogResult.Yes Then
-            LogActivity("Logout", $"'{currentUser}' logged out successfully.")
+            enterLog.LogActivity(GlobalVariables.currentUser, "Logout", $"'{GlobalVariables.currentUser}' logged out successfully.")
             ' Optional: Clear any session data here
             ' For example, clearing user-related data
             currentUser = ""
@@ -385,7 +385,7 @@ Public Class frmView
 
                     ' Notify user of successful export
 
-                    enterLog.LogActivity("Export", $"'{GlobalVariables.currentUser}' exported all data to CSV.")
+                    enterLog.LogActivity(GlobalVariables.currentUser, "Export", $"'{GlobalVariables.currentUser}' exported all data to CSV.")
                     My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Exclamation)
                     MessageBox.Show("All assets exported successfully!", "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information)
 

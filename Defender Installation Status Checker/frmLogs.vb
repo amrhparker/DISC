@@ -33,5 +33,4 @@
         ' Close the current form
         Me.Hide()
     End Sub
-
 End Class

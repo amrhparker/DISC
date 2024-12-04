@@ -21,6 +21,7 @@ Public Class frmALogin
     End Sub
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
+        MessageBox.Show("Login button clicked.") ' Debug message
         If txtUID.Text = "" Or txtUPW.Text = "" Then
             MessageBox.Show("Please key in your ID/password.")
             Exit Sub
@@ -37,7 +38,7 @@ Public Class frmALogin
             ' Set global variables when login is successful
             GlobalVariables.currentUser = uid
             GlobalVariables.currentPassword = hashedPW
-            enterLog.LogActivity("Login", $"'{uid}' logged in successfully.")
+            enterLog.LogActivity(uid, "Login", $"'{uid}' logged in successfully.")
             My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Exclamation)
 
             ' Show the main form or dashboard
