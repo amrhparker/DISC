@@ -38,7 +38,7 @@ Public Class frmALogin
             ' Set global variables when login is successful
             GlobalVariables.currentUser = uid
             GlobalVariables.currentPassword = hashedPW
-            enterLog.LogActivity(uid, "Login", $"'{uid}' logged in successfully.")
+            enterLog.LogActivity(uid, "Login", $"'{uid}' logged in successfully.", "")
             My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Exclamation)
 
             ' Show the main form or dashboard

@@ -92,7 +92,7 @@ Public Class frmUpdate
 
                         If rowsAffected > 0 Then
                             transaction.Commit() ' commit transaction before executing enterLog.LogActivity
-                            enterLog.LogActivity(GlobalVariables.currentUser, "Update", $"'{assetNum}' updated successfully")
+                            enterLog.LogActivity(GlobalVariables.currentUser, "Update", $"'{assetNum}' updated successfully", assetNum)
                             My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Exclamation)
                             MessageBox.Show("Asset updated successfully!")
                         Else
@@ -211,7 +211,7 @@ Public Class frmUpdate
         Dim confirmLogout = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If confirmLogout = DialogResult.Yes Then
-            enterLog.LogActivity(GlobalVariables.currentUser, "Logout", $"'{GlobalVariables.currentUser}' logged out successfully.")
+            enterLog.LogActivity(GlobalVariables.currentUser, "Logout", $"'{GlobalVariables.currentUser}' logged out successfully.", "")
             ' Optional: Clear any session data here
             ' For example, clearing user-related data
             currentUser = ""

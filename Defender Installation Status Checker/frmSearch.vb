@@ -77,7 +77,6 @@ Public Class frmSearch
     End Sub
     Private Sub ClearResults()
         lblNum.Text = ""
-        lblType.Text = ""
         lblStatus.Text = ""
         lblSAP.Text = ""
         lblLoc.Text = ""
