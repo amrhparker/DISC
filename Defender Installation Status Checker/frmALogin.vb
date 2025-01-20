@@ -5,7 +5,8 @@ Imports System.Data.SQLite
 
 Public Class frmALogin
     Private previousForm As Form
-    Dim connString As String = "Data Source=C:\Users\practicalits.fpssb\Downloads\amirah\disc.db;Version=3;BusyTimeout=5000;"
+    Dim databasePath As String = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "disc.db")
+    Dim connString As String = $"Data Source={databasePath};Version=3;"
     Dim connection As New SQLiteConnection(connString)
     ' Constructor to accept the previous form as a parameter
     Public Sub New(previous As Form)

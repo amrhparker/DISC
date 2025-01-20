@@ -1,7 +1,8 @@
 ﻿Imports System.Data.SQLite
 
 Public Class frmUpdate
-    Dim connString As String = "Data Source=C:\Users\practicalits.fpssb\Downloads\amirah\disc.db;Version=3;BusyTimeout=3000;"
+    Dim databasePath As String = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "disc.db")
+    Dim connString As String = $"Data Source={databasePath};Version=3;"
     Dim connection As New SQLiteConnection(connString)
     Dim allOffice As New List(Of String)
     Private adminUser As List(Of String)

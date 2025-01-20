@@ -2,7 +2,8 @@
 Imports System.Drawing.Printing
 
 Public Class frmList
-    Dim connString As String = "Data Source=C:\Users\practicalits.fpssb\Downloads\amirah\disc.db;Version=3;"
+    Dim databasePath As String = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "disc.db")
+    Dim connString As String = $"Data Source={databasePath};Version=3;"
     Dim connection As New SQLiteConnection(connString)
     Dim currentPage As Integer = 1
     Dim pageSize As Integer = 15 ' Number of items per page

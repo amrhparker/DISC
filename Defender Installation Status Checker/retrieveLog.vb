@@ -1,8 +1,8 @@
 ﻿Imports System.Data.SQLite
 
 Module retrieveLog
-    Dim connString As String = "Data Source=C:\Users\practicalits.fpssb\Downloads\amirah\disc.vb; Version=3;BusyTimeout=5000;"
-
+    Dim databasePath As String = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "disc.db")
+    Dim connString As String = $"Data Source={databasePath};Version=3;"
     Public Function GetLogs() As DataTable
         Dim selectQuery As String = "SELECT * FROM logs ORDER BY timestamp DESC"
         Dim dataTable As New DataTable()

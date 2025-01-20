@@ -2,7 +2,8 @@
 Imports System.Transactions
 
 Public Class frmDelete
-    Dim connString As String = "Data Source=C:\Users\practicalits.fpssb\Downloads\amirah\disc.db;Version=3;BusyTimeout=5000;"
+    Dim databasePath As String = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "disc.db")
+    Dim connString As String = $"Data Source={databasePath};Version=3;"
     Dim connection As New SQLiteConnection(connString)
     Private adminUser As List(Of String)
 

@@ -1,7 +1,8 @@
 ﻿Imports System.Data.SQLite
 
 Public Class frmHome
-    Dim connString As String = "Data Source=C:\Users\practicalits.fpssb\Downloads\amirah\disc.db;Version=3;"
+    Dim databasePath As String = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "disc.db")
+    Dim connString As String = $"Data Source={databasePath};Version=3;"
     Dim connection As New SQLiteConnection(connString)
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load

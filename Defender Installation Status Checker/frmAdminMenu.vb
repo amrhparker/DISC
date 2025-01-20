@@ -1,7 +1,8 @@
 ﻿Imports System.Data.SQLite
 
 Public Class frmAdminMenu
-    Private connString As String = "Data Source=C:\Users\practicalits.fpssb\Downloads\amirah\disc.db;Version=3;BusyTimeout=5000;"
+    Dim databasePath As String = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "disc.db")
+    Dim connString As String = $"Data Source={databasePath};Version=3;"
     Private adminUser As List(Of String)
 
     Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click

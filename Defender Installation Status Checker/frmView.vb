@@ -3,7 +3,8 @@ Imports System.IO
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 
 Public Class frmView
-    Dim connString As String = "Data Source=C:\Users\practicalits.fpssb\Downloads\amirah\disc.db;Version=3;"
+    Dim databasePath As String = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "disc.db")
+    Dim connString As String = $"Data Source={databasePath};Version=3;"
     Dim connection As New SQLiteConnection(connString)
     Private adminUser As List(Of String)
     Dim currentPage As Integer = 1

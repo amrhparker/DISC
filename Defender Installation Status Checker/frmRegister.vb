@@ -2,7 +2,8 @@
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class frmRegister
-    Dim connString As String = "Data Source=C:\Users\practicalits.fpssb\Downloads\amirah\disc.db;Version=3;"
+    Dim databasePath As String = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "disc.db")
+    Dim connString As String = $"Data Source={databasePath};Version=3;"
     Dim allOffice As New List(Of String)
     Private adminUser As List(Of String)
 

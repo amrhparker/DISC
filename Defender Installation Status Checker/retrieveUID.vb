@@ -1,7 +1,8 @@
 ﻿Imports System.Data.SQLite
 
 Module retrieveUID
-    Dim connString As String = "Data Source=C:\Users\practicalits.fpssb\Downloads\amirah\disc.db;Version=3;"
+    Dim databasePath As String = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "disc.db")
+    Dim connString As String = $"Data Source={databasePath};Version=3;"
 
     ' Function to get admin usernames from the database
     Public Function GetadminUser() As List(Of String)
