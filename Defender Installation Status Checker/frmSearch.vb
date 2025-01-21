@@ -20,6 +20,9 @@ Public Class frmSearch
     End Sub
 
     Private Sub frmSearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Disable resizing
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle
+
         txtSearch.Select()
         ClearResults()
     End Sub

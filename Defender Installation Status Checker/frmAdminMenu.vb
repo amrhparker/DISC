@@ -37,6 +37,8 @@ Public Class frmAdminMenu
 
     Private Sub frmAdminMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler Me.FormClosing, AddressOf frmAdminMenu_FormClosing
+        ' Disable resizing
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle
         adminUser = retrieveUID.GetadminUser()
         ' Check if the current user is an admin
         If Not IsUserAdmin(GlobalVariables.currentUser) Then

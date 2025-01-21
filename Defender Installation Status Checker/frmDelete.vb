@@ -15,6 +15,8 @@ Public Class frmDelete
     End Sub
     Private Sub frmDelete_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler Me.FormClosing, AddressOf frmDelete_FormClosing
+        ' Disable resizing
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle
         adminUser = retrieveUID.GetadminUser()
         ' Check if the current user is the admin
         If Not adminUser.Contains(GlobalVariables.currentUser) Then

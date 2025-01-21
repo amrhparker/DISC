@@ -267,6 +267,7 @@ Partial Class frmAdminMenu
         Controls.Add(Panel1)
         Controls.Add(lblState)
         Name = "frmAdminMenu"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "frmAdminMenu"
         Panel4.ResumeLayout(False)
         Panel4.PerformLayout()

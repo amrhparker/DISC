@@ -326,6 +326,7 @@ Partial Class frmDelete
         Controls.Add(GroupBox1)
         MaximizeBox = False
         Name = "frmDelete"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "frmDelete"
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         MenuStrip1.ResumeLayout(False)

@@ -420,4 +420,9 @@
         ' Close the current form
         Me.Hide()
     End Sub
+
+    Private Sub frmMap_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Disable resizing
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle
+    End Sub
 End Class

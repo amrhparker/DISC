@@ -173,6 +173,7 @@ Partial Class frmHome
         Controls.Add(btnMap)
         MaximizeBox = False
         Name = "frmHome"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Form1"
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()

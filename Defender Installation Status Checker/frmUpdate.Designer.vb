@@ -136,12 +136,12 @@ Partial Class frmUpdate
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial Narrow", 9F)
-        Label4.Location = New Point(193, 178)
+        Label4.Location = New Point(139, 178)
         Label4.Margin = New Padding(2, 0, 2, 0)
         Label4.Name = "Label4"
-        Label4.Size = New Size(105, 20)
+        Label4.Size = New Size(159, 20)
         Label4.TabIndex = 21
-        Label4.Text = "Installation Status"
+        Label4.Text = "Defender Installation Status"
         ' 
         ' Label2
         ' 
@@ -294,6 +294,7 @@ Partial Class frmUpdate
         Controls.Add(GroupBox1)
         MaximizeBox = False
         Name = "frmUpdate"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "frmUpdate"
         MenuStrip1.ResumeLayout(False)
         MenuStrip1.PerformLayout()

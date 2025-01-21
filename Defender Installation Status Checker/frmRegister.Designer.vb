@@ -67,7 +67,7 @@ Partial Class frmRegister
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Arial Narrow", 9F)
-        Label2.Location = New Point(0, 27)
+        Label2.Location = New Point(104, 27)
         Label2.Margin = New Padding(2, 0, 2, 0)
         Label2.Name = "Label2"
         Label2.Size = New Size(116, 20)
@@ -78,18 +78,19 @@ Partial Class frmRegister
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial Narrow", 9F)
-        Label4.Location = New Point(11, 189)
+        Label4.Location = New Point(61, 191)
         Label4.Margin = New Padding(2, 0, 2, 0)
         Label4.Name = "Label4"
-        Label4.Size = New Size(105, 20)
+        Label4.Size = New Size(159, 20)
         Label4.TabIndex = 6
-        Label4.Text = "Installation Status"
+        Label4.Text = "Defender Installation Status"
+        Label4.TextAlign = ContentAlignment.MiddleRight
         ' 
         ' Label6
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Arial Narrow", 9F)
-        Label6.Location = New Point(23, 270)
+        Label6.Location = New Point(127, 270)
         Label6.Margin = New Padding(2, 0, 2, 0)
         Label6.Name = "Label6"
         Label6.Size = New Size(93, 20)
@@ -99,7 +100,7 @@ Partial Class frmRegister
         ' txtAssetNum
         ' 
         txtAssetNum.Font = New Font("Arial Narrow", 9F)
-        txtAssetNum.Location = New Point(160, 27)
+        txtAssetNum.Location = New Point(264, 27)
         txtAssetNum.Margin = New Padding(2, 3, 2, 3)
         txtAssetNum.Name = "txtAssetNum"
         txtAssetNum.Size = New Size(430, 25)
@@ -122,7 +123,7 @@ Partial Class frmRegister
         ' 
         chkStatus.AutoSize = True
         chkStatus.Font = New Font("Arial Narrow", 9F)
-        chkStatus.Location = New Point(160, 188)
+        chkStatus.Location = New Point(264, 188)
         chkStatus.Margin = New Padding(2, 3, 2, 3)
         chkStatus.Name = "chkStatus"
         chkStatus.Size = New Size(77, 24)
@@ -135,7 +136,7 @@ Partial Class frmRegister
         Label7.AutoSize = True
         Label7.Font = New Font("Arial Narrow", 9F)
         Label7.ForeColor = SystemColors.GrayText
-        Label7.Location = New Point(241, 191)
+        Label7.Location = New Point(345, 191)
         Label7.Margin = New Padding(2, 0, 2, 0)
         Label7.Name = "Label7"
         Label7.Size = New Size(130, 20)
@@ -146,7 +147,7 @@ Partial Class frmRegister
         ' 
         cboOffice.Font = New Font("Arial Narrow", 9F)
         cboOffice.FormattingEnabled = True
-        cboOffice.Location = New Point(160, 269)
+        cboOffice.Location = New Point(264, 269)
         cboOffice.Margin = New Padding(2, 3, 2, 3)
         cboOffice.Name = "cboOffice"
         cboOffice.Size = New Size(430, 28)
@@ -155,7 +156,7 @@ Partial Class frmRegister
         ' txtSAP
         ' 
         txtSAP.Font = New Font("Arial Narrow", 9F)
-        txtSAP.Location = New Point(160, 108)
+        txtSAP.Location = New Point(264, 108)
         txtSAP.Margin = New Padding(2, 3, 2, 3)
         txtSAP.Name = "txtSAP"
         txtSAP.Size = New Size(430, 25)
@@ -165,7 +166,7 @@ Partial Class frmRegister
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Arial Narrow", 9F)
-        Label5.Location = New Point(52, 108)
+        Label5.Location = New Point(156, 108)
         Label5.Margin = New Padding(2, 0, 2, 0)
         Label5.Name = "Label5"
         Label5.Size = New Size(64, 20)
@@ -250,9 +251,9 @@ Partial Class frmRegister
         GroupBox1.Controls.Add(txtAssetNum)
         GroupBox1.Controls.Add(Label4)
         GroupBox1.Controls.Add(Label6)
-        GroupBox1.Location = New Point(252, 189)
+        GroupBox1.Location = New Point(192, 194)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(590, 303)
+        GroupBox1.Size = New Size(711, 303)
         GroupBox1.TabIndex = 65
         GroupBox1.TabStop = False
         ' 
@@ -270,6 +271,7 @@ Partial Class frmRegister
         Margin = New Padding(2, 3, 2, 3)
         MaximizeBox = False
         Name = "frmRegister"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "frmAdmin"
         MenuStrip1.ResumeLayout(False)
         MenuStrip1.PerformLayout()

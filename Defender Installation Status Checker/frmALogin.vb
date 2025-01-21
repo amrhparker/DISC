@@ -94,6 +94,8 @@ Public Class frmALogin
     End Function
 
     Private Sub frmALogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Disable resizing
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle
         txtUID.Select()
     End Sub
 End Class

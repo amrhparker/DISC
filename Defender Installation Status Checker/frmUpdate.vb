@@ -15,6 +15,8 @@ Public Class frmUpdate
     End Sub
     Private Sub frmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler Me.FormClosing, AddressOf frmUpdate_FormClosing
+        ' Disable resizing
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle
         adminUser = retrieveUID.GetadminUser()
         ' Check if the current user is an admin
         If Not adminUser.Contains(GlobalVariables.currentUser) Then

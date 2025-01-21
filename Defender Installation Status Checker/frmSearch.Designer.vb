@@ -103,7 +103,7 @@ Partial Class frmSearch
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Arial Narrow", 9F)
-        Label3.Location = New Point(220, 359)
+        Label3.Location = New Point(219, 365)
         Label3.Name = "Label3"
         Label3.Size = New Size(159, 20)
         Label3.TabIndex = 9
@@ -230,6 +230,7 @@ Partial Class frmSearch
         Controls.Add(PictureBox2)
         MaximizeBox = False
         Name = "frmSearch"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "frmSearch"
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

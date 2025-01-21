@@ -82,6 +82,7 @@ Partial Class frmMap
         Controls.Add(btnBack)
         MaximizeBox = False
         Name = "frmMap"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Form2"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

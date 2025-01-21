@@ -206,25 +206,25 @@ Partial Class frmView
         ' strView
         ' 
         strView.Name = "strView"
-        strView.Size = New Size(224, 26)
+        strView.Size = New Size(146, 26)
         strView.Text = "View"
         ' 
         ' strUpdate
         ' 
         strUpdate.Name = "strUpdate"
-        strUpdate.Size = New Size(224, 26)
+        strUpdate.Size = New Size(146, 26)
         strUpdate.Text = "Update"
         ' 
         ' strRegister
         ' 
         strRegister.Name = "strRegister"
-        strRegister.Size = New Size(224, 26)
+        strRegister.Size = New Size(146, 26)
         strRegister.Text = "Register"
         ' 
         ' strDelete
         ' 
         strDelete.Name = "strDelete"
-        strDelete.Size = New Size(224, 26)
+        strDelete.Size = New Size(146, 26)
         strDelete.Text = "Delete"
         ' 
         ' AdministrationToolStripMenuItem
@@ -237,13 +237,13 @@ Partial Class frmView
         ' strLogs
         ' 
         strLogs.Name = "strLogs"
-        strLogs.Size = New Size(224, 26)
+        strLogs.Size = New Size(145, 26)
         strLogs.Text = "Logs"
         ' 
         ' strLogout
         ' 
         strLogout.Name = "strLogout"
-        strLogout.Size = New Size(224, 26)
+        strLogout.Size = New Size(145, 26)
         strLogout.Text = "Log Out"
         ' 
         ' frmView
@@ -267,6 +267,7 @@ Partial Class frmView
         MainMenuStrip = MenuStrip1
         MaximizeBox = False
         Name = "frmView"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "frmView"
         MenuStrip1.ResumeLayout(False)
         MenuStrip1.PerformLayout()

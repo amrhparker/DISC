@@ -26,13 +26,14 @@ Public Class frmList
         Me.Hide()
     End Sub
     Private Sub frmList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Set up the columns in the ListView
-        'ListView1.Columns.Add("Asset ID", 100, HorizontalAlignment.Center)
+        ' Disable resizing
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle
         getTotalOffice()
         getTotalAsset()
         getTotalAssetNoDefend()
+        ' Set up the columns in the ListView
         ListView1.Columns.Add("Asset Number", 120, HorizontalAlignment.Center)
-        ListView1.Columns.Add("Asset Status", 100, HorizontalAlignment.Center)
+        ListView1.Columns.Add("Defender Installation Status", 100, HorizontalAlignment.Center)
         ListView1.Columns.Add("Asset SAP", 120, HorizontalAlignment.Center)
         ListView1.Columns.Add("Office", 200, HorizontalAlignment.Center)
         If locID = 1 Then

@@ -20,6 +20,8 @@ Public Class frmView
 
     Private Sub frmView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler Me.FormClosing, AddressOf frmView_FormClosing
+        ' Disable resizing
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle
         adminUser = retrieveUID.GetadminUser()
         ' Check if the current user is the admin
         If Not adminUser.Contains(GlobalVariables.currentUser) Then
@@ -35,7 +37,7 @@ Public Class frmView
         ' Set up the columns in the ListView
         ListView1.Columns.Add("Asset Number", 120, HorizontalAlignment.Center)
         ListView1.Columns.Add("Asset SAP", 120, HorizontalAlignment.Center)
-        ListView1.Columns.Add("Asset Status", 100, HorizontalAlignment.Center)
+        ListView1.Columns.Add("Defender Installation Status", 100, HorizontalAlignment.Center)
         ListView1.Columns.Add("Office", 300, HorizontalAlignment.Center)
         ListView1.Columns.Add("State", 150, HorizontalAlignment.Center)
 
@@ -50,7 +52,7 @@ Public Class frmView
         ' Set up ListView2 similarly
         ListView2.Columns.Add("Asset Number", 120, HorizontalAlignment.Center)
         ListView2.Columns.Add("Asset SAP", 120, HorizontalAlignment.Center)
-        ListView2.Columns.Add("Asset Status", 100, HorizontalAlignment.Center)
+        ListView2.Columns.Add("Defender Installation Status", 100, HorizontalAlignment.Center)
         ListView2.Columns.Add("Office", 300, HorizontalAlignment.Center)
         ListView2.Columns.Add("State", 150, HorizontalAlignment.Center)
     End Sub
@@ -370,7 +372,7 @@ Public Class frmView
                     Dim reader = command.ExecuteReader()
 
                     ' Write the CSV headers
-                    writer.WriteLine("Asset Number,Asset SAP, Asset Status,Location Name,Office Name")
+                    writer.WriteLine("Asset Number,Asset SAP,Defender Installation Status,Location Name,Office Name")
 
                     ' Write the data rows
                     While reader.Read()

@@ -144,6 +144,7 @@ Partial Class frmALogin
         Controls.Add(btnBack)
         Controls.Add(PictureBox1)
         Name = "frmALogin"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "frmAdmin"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
