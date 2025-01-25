@@ -97,8 +97,6 @@ Public Class frmHome
         frm2.Show()
         Me.Hide()
     End Sub
-
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim frm3 As New frmALogin(Me)
         frm3.Show()
