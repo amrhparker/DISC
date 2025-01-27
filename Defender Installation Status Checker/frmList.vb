@@ -38,30 +38,43 @@ Public Class frmList
         ListView1.Columns.Add("Office", 200, HorizontalAlignment.Center)
         If locID = 1 Then
             GroupBox1.Text = "Perlis"
+            Me.Text = "Perlis"
         ElseIf locID = 2 Then
             GroupBox1.Text = "Kedah"
+            Me.Text = "Kedah"
         ElseIf locID = 3 Then
             GroupBox1.Text = "Pulau Pinang"
+            Me.Text = "Pulau Pinang"
         ElseIf locID = 4 Then
             GroupBox1.Text = "Perak"
+            Me.Text = "Perak"
         ElseIf locID = 5 Then
             GroupBox1.Text = "Headquarters"
+            Me.Text = "Headquarters"
         ElseIf locID = 6 Then
             GroupBox1.Text = "Negeri Sembilan"
+            Me.Text = "Negeri Sembilan"
         ElseIf locID = 7 Then
             GroupBox1.Text = "Melaka"
+            Me.Text = "Melaka"
         ElseIf locID = 8 Then
             GroupBox1.Text = "Johor"
+            Me.Text = "Johor"
         ElseIf locID = 9 Then
             GroupBox1.Text = "Pahang"
+            Me.Text = "Pahang"
         ElseIf locID = 10 Then
             GroupBox1.Text = "Kelantan"
+            Me.Text = "Kelantan"
         ElseIf locID = 11 Then
             GroupBox1.Text = "Terengganu"
+            Me.Text = "Terengganu"
         ElseIf locID = 12 Then
             GroupBox1.Text = "Sabah"
+            Me.Text = "Sabah"
         ElseIf locID = 13 Then
             GroupBox1.Text = "Sarawak"
+            Me.Text = "Sarawak"
         End If
 
         retrieveData()

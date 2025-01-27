@@ -220,7 +220,6 @@ Partial Class frmList
         MaximizeBox = False
         Name = "frmList"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "frmPerlis"
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()
         ResumeLayout(False)
