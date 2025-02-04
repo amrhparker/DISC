@@ -268,7 +268,7 @@ Partial Class frmView
         MaximizeBox = False
         Name = "frmView"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "frmView"
+        Text = "View Asset"
         MenuStrip1.ResumeLayout(False)
         MenuStrip1.PerformLayout()
         ResumeLayout(False)

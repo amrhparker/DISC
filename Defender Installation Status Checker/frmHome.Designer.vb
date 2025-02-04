@@ -187,7 +187,7 @@ Partial Class frmHome
         MaximizeBox = False
         Name = "frmHome"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Form1"
+        Text = "Home"
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()
         ResumeLayout(False)

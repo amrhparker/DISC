@@ -295,7 +295,7 @@ Partial Class frmUpdate
         MaximizeBox = False
         Name = "frmUpdate"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "frmUpdate"
+        Text = "Update Asset"
         MenuStrip1.ResumeLayout(False)
         MenuStrip1.PerformLayout()
         GroupBox1.ResumeLayout(False)

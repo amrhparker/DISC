@@ -145,7 +145,7 @@ Partial Class frmALogin
         Controls.Add(PictureBox1)
         Name = "frmALogin"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "frmAdmin"
+        Text = "Admin Login"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()

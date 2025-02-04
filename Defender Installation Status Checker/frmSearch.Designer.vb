@@ -231,7 +231,7 @@ Partial Class frmSearch
         MaximizeBox = False
         Name = "frmSearch"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "frmSearch"
+        Text = "Search"
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()

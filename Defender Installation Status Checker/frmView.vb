@@ -363,7 +363,7 @@ Public Class frmView
                     connection.Open()
 
                     ' Query to fetch all assets
-                    Dim sql = "SELECT a.assetNum, a.assetStatus, a.assetSAP l.locationName, o.officeName 
+                    Dim sql = "SELECT a.assetNum, a.assetStatus, a.assetSAP, l.locationName, o.officeName 
                            FROM asset a 
                            INNER JOIN office o ON a.officeID = o.officeID
                            INNER JOIN location l ON o.locationID = l.locationID;"

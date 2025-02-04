@@ -327,7 +327,7 @@ Partial Class frmDelete
         MaximizeBox = False
         Name = "frmDelete"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "frmDelete"
+        Text = "Delete Asset"
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         MenuStrip1.ResumeLayout(False)
         MenuStrip1.PerformLayout()

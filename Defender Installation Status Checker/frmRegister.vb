@@ -4,6 +4,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Public Class frmRegister
     Dim databasePath As String = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "disc.db")
     Dim connString As String = $"Data Source={databasePath};Version=3;"
+    Dim connection As New SQLiteConnection(connString)
     Dim allOffice As New List(Of String)
     Private adminUser As List(Of String)
 
@@ -100,7 +101,7 @@ Public Class frmRegister
         Dim office As String = cboOffice.SelectedItem.ToString()
 
         ' Prepare SQLite query
-        Dim sql As String = "INSERT INTO asset (assetNum, , assetStatus, assetSAP, officeID) 
+        Dim sql As String = "INSERT INTO asset (assetNum, assetStatus, assetSAP, officeID) 
                              VALUES (@assetNum, @statVal, @assetSAP, (SELECT officeID FROM office WHERE officeName = @officeName));"
 
         Try

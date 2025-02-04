@@ -86,7 +86,7 @@ Partial Class frmLogs
         MaximizeBox = False
         Name = "frmLogs"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "frmLogs"
+        Text = "Activity Logs"
         CType(dataGridViewLogs, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()

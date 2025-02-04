@@ -1,4 +1,6 @@
 ﻿Imports System.Data.SQLite
+Imports System.Transactions
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar
 
 Public Class frmUpdate
     Dim databasePath As String = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "disc.db")
@@ -9,9 +11,9 @@ Public Class frmUpdate
     ' Constructor to accept the previous form as a parameter
     Private Sub btnBack_Click(sender As Object, e As EventArgs)
         ' Show the previous form
-        frmAdminMenu.Show
+        frmAdminMenu.Show()
         ' Close the current form
-        Hide
+        Hide()
     End Sub
     Private Sub frmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler Me.FormClosing, AddressOf frmUpdate_FormClosing
@@ -79,32 +81,62 @@ Public Class frmUpdate
         Dim sap As String = txtSAP.Text.Trim()
         Dim officeLocation As String = cboOffice.Text.Trim()
 
-        Dim Sql As String = "UPDATE asset SET assetStatus = @status, assetSAP = @sap, officeID = (SELECT officeID FROM office WHERE officeName = @officeLocation) WHERE assetNum = @assetNum;"
+        ' Validate inputs
+        If String.IsNullOrEmpty(assetNum) Then
+            MessageBox.Show("Asset number cannot be empty.")
+            Return
+        End If
+
+        If String.IsNullOrEmpty(officeLocation) Then
+            MessageBox.Show("Office location cannot be empty.")
+            Return
+        End If
+
+        Dim sql As String = "UPDATE asset SET assetStatus = @status, assetSAP = @sap, officeID = (SELECT officeID FROM office WHERE officeName = @officeLocation) WHERE assetNum = @assetNum;"
+
+        ' Declare the transaction variable outside the Using block
+        Dim transaction As SQLiteTransaction = Nothing
 
         Try
             Using connection As New SQLiteConnection(connString)
                 connection.Open()
-                Using transaction As SQLiteTransaction = connection.BeginTransaction()
-                    Using command As New SQLiteCommand(Sql, connection, transaction)
-                        command.Parameters.AddWithValue("@status", status)
-                        command.Parameters.AddWithValue("@officeLocation", officeLocation)
-                        command.Parameters.AddWithValue("@sap", sap)
-                        command.Parameters.AddWithValue("@assetNum", assetNum)
+                ' Initialize the transaction
+                transaction = connection.BeginTransaction()
 
-                        Dim rowsAffected As Integer = command.ExecuteNonQuery()
+                Using command As New SQLiteCommand(sql, connection, transaction)
+                    ' Add parameters
+                    command.Parameters.AddWithValue("@status", status)
+                    command.Parameters.AddWithValue("@officeLocation", officeLocation)
+                    command.Parameters.AddWithValue("@sap", sap)
+                    command.Parameters.AddWithValue("@assetNum", assetNum)
 
-                        If rowsAffected > 0 Then
-                            transaction.Commit() ' commit transaction before executing enterLog.LogActivity
+                    ' Execute the update
+                    Dim rowsAffected As Integer = command.ExecuteNonQuery()
+
+                    If rowsAffected > 0 Then
+                        ' Commit the transaction
+                        transaction.Commit()
+
+                        ' Log the activity
+                        Try
                             enterLog.LogActivity(GlobalVariables.currentUser, "Update", $"'{assetNum}' updated successfully", assetNum)
-                            My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Exclamation)
-                            MessageBox.Show("Asset updated successfully!")
-                        Else
-                            MessageBox.Show("No asset found with the given asset number.")
-                        End If
-                    End Using
+                        Catch logEx As Exception
+                            MessageBox.Show("Logging failed: " & logEx.Message)
+                        End Try
+
+                        ' Notify the user
+                        My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Exclamation)
+                        MessageBox.Show("Asset updated successfully!")
+                    Else
+                        MessageBox.Show("No asset found with the given asset number.")
+                    End If
                 End Using
             End Using
         Catch ex As Exception
+            ' Rollback the transaction in case of an error
+            If transaction IsNot Nothing Then
+                transaction.Rollback()
+            End If
             MessageBox.Show("An error occurred: " & ex.Message)
         End Try
     End Sub
