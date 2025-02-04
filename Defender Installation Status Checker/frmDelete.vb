@@ -3,7 +3,7 @@ Imports System.Transactions
 
 Public Class frmDelete
     Dim databasePath As String = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "disc.db")
-    Dim connString As String = $"Data Source={databasePath};Version=3;"
+    Dim connString As String = $"Data Source={databasePath};Version=3;Busy Timeout=10000;"
     Dim connection As New SQLiteConnection(connString)
     Private adminUser As List(Of String)
 
@@ -101,42 +101,44 @@ Public Class frmDelete
 
     Private Sub deleteAsset()
         Dim assetNum As String = txtAssetNum.Text.Trim()
-        Try
-            Using connection As New SQLiteConnection(connString)
-                connection.Open()
 
-                ' Step 1: Delete the asset
-                Using command1 As New SQLiteCommand("DELETE FROM asset WHERE assetNum = @assetNum;", connection)
-                    command1.Parameters.AddWithValue("@assetNum", assetNum)
-                    Dim rowsAffected As Integer = command1.ExecuteNonQuery()
+        Using connection As New SQLiteConnection(connString)
+            connection.Open()
+            Using transaction As SQLiteTransaction = connection.BeginTransaction()
+                Try
+                    Using command1 As New SQLiteCommand("DELETE FROM asset WHERE assetNum = @assetNum;", connection)
+                        command1.Parameters.AddWithValue("@assetNum", assetNum)
+                        Dim rowsAffected As Integer = command1.ExecuteNonQuery()
 
-                    ' Check if the asset was deleted
-                    If rowsAffected > 0 Then
-                        ' Step 2: Reset the AUTOINCREMENT value
-                        Using command2 As New SQLiteCommand("UPDATE sqlite_sequence SET seq = (SELECT MAX(assetID) FROM asset) WHERE name = 'asset';", connection)
-                            command2.ExecuteNonQuery()
-                        End Using
-
-                        ' Step 3: Perform VACUUM outside of the transaction
-                        Using vacuumCommand As New SQLiteCommand("VACUUM;", connection)
-                            vacuumCommand.ExecuteNonQuery()
-                        End Using
-
-                        enterLog.LogActivity(GlobalVariables.currentUser, "Delete", $"'{txtAssetNum.Text.Trim()}' is deleted from the database", assetNum)
-                        My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Exclamation)
-                        MessageBox.Show("Asset deleted successfully!")
-                    Else
-                        MessageBox.Show("Asset not found or already deleted.")
-                    End If
-                End Using
+                        ' Check if the asset was deleted
+                        If rowsAffected > 0 Then
+                            transaction.Commit()
+                            Try
+                                enterLog.LogActivity(GlobalVariables.currentUser, "Delete", $"'{txtAssetNum.Text.Trim()}' is deleted from the database", assetNum)
+                            Catch ex As Exception
+                                MessageBox.Show("Logging failed: " & ex.Message)
+                            End Try
+                            My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Exclamation)
+                            MessageBox.Show("Asset deleted successfully!")
+                        Else
+                            MessageBox.Show("Asset not found or already deleted.")
+                        End If
+                    End Using
+                Catch ex As Exception
+                    ' Attempt rollback within the transaction's Using block
+                    Try
+                        transaction.Rollback()
+                    Catch rollEx As Exception
+                        MessageBox.Show("Error during rollback: " & rollEx.Message)
+                    End Try
+                    MessageBox.Show("An error occurred: " & ex.Message)
+                End Try
             End Using
-            ' Show the previous form
-            frmAdminMenu.Show()
-            ' Close the current form
-            Me.Hide()
-        Catch ex As Exception
-            MessageBox.Show("An error occurred: " & ex.Message)
-        End Try
+        End Using
+        ' Show the previous form
+        frmAdminMenu.Show()
+        ' Close the current form
+        Me.Hide()
     End Sub
 
     Private Sub strView_Click(sender As Object, e As EventArgs) Handles strView.Click

@@ -4,7 +4,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar
 
 Public Class frmUpdate
     Dim databasePath As String = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "disc.db")
-    Dim connString As String = $"Data Source={databasePath};Version=3;"
+    Dim connString As String = $"Data Source={databasePath};Version=3;Busy Timeout=10000;"
     Dim connection As New SQLiteConnection(connString)
     Dim allOffice As New List(Of String)
     Private adminUser As List(Of String)
@@ -92,53 +92,43 @@ Public Class frmUpdate
             Return
         End If
 
-        Dim sql As String = "UPDATE asset SET assetStatus = @status, assetSAP = @sap, officeID = (SELECT officeID FROM office WHERE officeName = @officeLocation) WHERE assetNum = @assetNum;"
+        Using connection As New SQLiteConnection(connString)
+            connection.Open()
+            Using transaction As SQLiteTransaction = connection.BeginTransaction()
+                Try
+                    Dim sql As String = "UPDATE asset SET assetStatus = @status, assetSAP = @sap, officeID = (SELECT officeID FROM office WHERE officeName = @officeLocation) WHERE assetNum = @assetNum;"
+                    Using command As New SQLiteCommand(sql, connection, transaction)
+                        command.Parameters.AddWithValue("@status", chkStatus.Checked)
+                        command.Parameters.AddWithValue("@officeLocation", cboOffice.Text.Trim)
+                        command.Parameters.AddWithValue("@sap", txtSAP.Text.Trim)
+                        command.Parameters.AddWithValue("@assetNum", txtAssetNum.Text.Trim)
 
-        ' Declare the transaction variable outside the Using block
-        Dim transaction As SQLiteTransaction = Nothing
+                        Dim rowsAffected As Integer = command.ExecuteNonQuery()
 
-        Try
-            Using connection As New SQLiteConnection(connString)
-                connection.Open()
-                ' Initialize the transaction
-                transaction = connection.BeginTransaction()
-
-                Using command As New SQLiteCommand(sql, connection, transaction)
-                    ' Add parameters
-                    command.Parameters.AddWithValue("@status", status)
-                    command.Parameters.AddWithValue("@officeLocation", officeLocation)
-                    command.Parameters.AddWithValue("@sap", sap)
-                    command.Parameters.AddWithValue("@assetNum", assetNum)
-
-                    ' Execute the update
-                    Dim rowsAffected As Integer = command.ExecuteNonQuery()
-
-                    If rowsAffected > 0 Then
-                        ' Commit the transaction
-                        transaction.Commit()
-
-                        ' Log the activity
-                        Try
-                            enterLog.LogActivity(GlobalVariables.currentUser, "Update", $"'{assetNum}' updated successfully", assetNum)
-                        Catch logEx As Exception
-                            MessageBox.Show("Logging failed: " & logEx.Message)
-                        End Try
-
-                        ' Notify the user
-                        My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Exclamation)
-                        MessageBox.Show("Asset updated successfully!")
-                    Else
-                        MessageBox.Show("No asset found with the given asset number.")
-                    End If
-                End Using
+                        If rowsAffected > 0 Then
+                            transaction.Commit()
+                            Try
+                                enterLog.LogActivity(GlobalVariables.currentUser, "Update", $"'{txtAssetNum.Text.Trim}' updated successfully", txtAssetNum.Text.Trim)
+                            Catch logEx As Exception
+                                MessageBox.Show("Logging failed: " & logEx.Message)
+                            End Try
+                            My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Exclamation)
+                            MessageBox.Show("Asset updated successfully!")
+                        Else
+                            MessageBox.Show("No asset found with the given asset number.")
+                        End If
+                    End Using
+                Catch ex As Exception
+                    ' Attempt rollback within the transaction's Using block
+                    Try
+                        transaction.Rollback()
+                    Catch rollEx As Exception
+                        MessageBox.Show("Error during rollback: " & rollEx.Message)
+                    End Try
+                    MessageBox.Show("An error occurred: " & ex.Message)
+                End Try
             End Using
-        Catch ex As Exception
-            ' Rollback the transaction in case of an error
-            If transaction IsNot Nothing Then
-                transaction.Rollback()
-            End If
-            MessageBox.Show("An error occurred: " & ex.Message)
-        End Try
+        End Using
     End Sub
 
     Private Sub LoadComboBoxData()
