@@ -92,7 +92,6 @@ Public Class frmDelete
         Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete this asset?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
         If result = DialogResult.Yes Then
             deleteAsset()
-            MessageBox.Show("Asset deleted successfully.", "Deletion Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             ' User clicked No, cancel the deletion
             MessageBox.Show("Deletion canceled.", "Cancellation", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -119,7 +118,7 @@ Public Class frmDelete
                                 MessageBox.Show("Logging failed: " & ex.Message)
                             End Try
                             My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Exclamation)
-                            MessageBox.Show("Asset deleted successfully!")
+                            MessageBox.Show("Asset deleted successfully.", "Deletion Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         Else
                             MessageBox.Show("Asset not found or already deleted.")
                         End If
